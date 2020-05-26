@@ -1,6 +1,6 @@
 import React from "react"
 import LandingPage from "./LandingPage"
-
+import { Route } from "react-router-dom"
 import styled from "styled-components"
 
 const ContentSection = styled.div`
@@ -18,7 +18,9 @@ const ContentSection = styled.div`
 export default function Content() {
     return (
         <ContentSection>
-            <LandingPage />
+            <Route path="/">
+                <LandingPage />
+            </Route>
         </ContentSection>
     )
 }
