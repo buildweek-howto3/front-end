@@ -12,7 +12,7 @@ const LandingSection = styled.section`
 `
 
 function LandingPage(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <LandingSection>
       {props.howTos.map((howTo) => {
