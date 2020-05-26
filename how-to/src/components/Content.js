@@ -3,6 +3,8 @@ import LandingPage from "./LandingPage"
 import { Route } from "react-router-dom"
 import styled from "styled-components"
 
+import CreateHowTo from "./CreateHowTo"
+
 const ContentSection = styled.div`
 
     height: 80vh;
@@ -18,8 +20,11 @@ const ContentSection = styled.div`
 export default function Content() {
     return (
         <ContentSection>
-            <Route path="/">
+            <Route exact path="/">
                 <LandingPage />
+            </Route>
+            <Route path="/create-how-to">
+                <CreateHowTo />
             </Route>
         </ContentSection>
     )
