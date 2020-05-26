@@ -15,6 +15,8 @@ export default function CreateHowTo() {
             <input />
             <label>Step 3:</label>
             <input />
+            <button>Add Step</button>
+            <button>Submit</button>
         </form>
     )
 }
