@@ -1,12 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
 
-export default function LandingPage() {
+function LandingPage(props) {
+  console.log(props);
   return (
     <section>
-      <div className="howToCard">
-        <h2>Title</h2>
-        <p>Description goes here.</p>
-      </div>
+      {props.howTos.map((howTo) => {
+        return (
+          <div className="howToCard">
+            <h2>{howTo.title}</h2>
+            <p>{howTo.description}</p>
+          </div>
+        );
+      })}
     </section>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    howTos: state.howTos,
+  };
+};
+
+export default connect(mapStateToProps, {})(LandingPage);
