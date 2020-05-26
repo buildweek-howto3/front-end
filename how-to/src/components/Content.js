@@ -14,6 +14,7 @@ const ContentSection = styled.div`
     justify-content:center;
     align-items: center;
     background-color: lightblue;
+    width: 100%;
 
 
 `
