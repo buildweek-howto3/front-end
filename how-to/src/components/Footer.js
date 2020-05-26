@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom"
 import styled from "styled-components";
 
 const FooterSection = styled.footer`
@@ -16,7 +16,13 @@ const FooterSection = styled.footer`
 export default function Footer() {
   return (
     <FooterSection>
-      <p>Social Links / Copy Right / etc go here</p>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
+        <Link to="/create-how-to">Create</Link>
+        <Link to="/favorites">Favorites</Link>
+      </nav>
     </FooterSection>
   );
 }
