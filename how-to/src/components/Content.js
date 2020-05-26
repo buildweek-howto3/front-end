@@ -4,6 +4,8 @@ import { Route } from "react-router-dom"
 import styled from "styled-components"
 
 import CreateHowTo from "./CreateHowTo"
+import Login from "./Login"
+import Signup from "./Signup"
 
 const ContentSection = styled.div`
 
@@ -22,6 +24,12 @@ export default function Content() {
         <ContentSection>
             <Route exact path="/">
                 <LandingPage />
+            </Route>
+            <Route path="/login">
+                <Login />
+            </Route>
+            <Route path="/signup">
+                <Signup />
             </Route>
             <Route path="/create-how-to">
                 <CreateHowTo />
