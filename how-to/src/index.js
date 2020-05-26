@@ -9,13 +9,16 @@ import {Provider} from "react-redux"
 import {howToReducer} from "./reducers/howToReducer"
 import thunk from "redux-thunk"
 import logger from "redux-logger"
-
+// setup router
+import { BrowserRouter as Router } from "react-router-dom"
 const store = createStore(howToReducer, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
