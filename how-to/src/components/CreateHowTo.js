@@ -1,9 +1,10 @@
 import React, { useEffect } from "react"
+import { connect } from "react-redux"
 import axios from "axios"
 
 
-export default function CreateHowTo() {
-
+function CreateHowTo(props) {
+console.log(props) 
     // useEffect(() => {
     //     axios.get("https://howtobw.herokuapp.com/api/auth/login")
     //     .then(res => {
@@ -20,14 +21,6 @@ export default function CreateHowTo() {
     //         console.log(err)
     //     })
     // }, [])
-
-    const addStep = () => {
-        const newStep = {
-            id: Date.now(),
-            stepName: "",
-            stepDescription: "",
-        }
-    }
     
     return(
         <form>
@@ -46,3 +39,11 @@ export default function CreateHowTo() {
         </form>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        howTos: state.howTos
+    }
+}
+
+export default connect(mapStateToProps, {})(CreateHowTo)
