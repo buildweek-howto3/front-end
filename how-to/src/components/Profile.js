@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 import CreateHowTo from "./CreateHowTo";
+import MyHowTos from "./MyHowTos";
 import styled from "styled-components";
 
 const ProfileContainer = styled.div`
@@ -21,7 +22,7 @@ const ProfileContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 function Profile() {
   return (
@@ -33,11 +34,14 @@ function Profile() {
         <Route path="/profile/create-how-to">
           <CreateHowTo />
         </Route>
+        <Route path="/profile/my-how-tos">
+          <MyHowTos />
+        </Route>
       </ProfileContent>
       <nav>
         <Link to="/profile/create-how-to">Create</Link>
-        <Link to="/profile/favorites">Favorites</Link>
         <Link to="/profile/my-how-tos">My How-Tos</Link>
+        <Link to="/profile/favorites">Favorites</Link>
       </nav>
     </ProfileContainer>
   );

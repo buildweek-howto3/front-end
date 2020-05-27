@@ -15,3 +15,16 @@ export const getHowTos = () => {
     )
    }
 }
+
+export const createHowTo = (newHowTo) => {
+  return dispatch => {
+    axiosWithAuth()
+    .post("https://howtobw.herokuapp.com/api/posts", newHowTo)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}

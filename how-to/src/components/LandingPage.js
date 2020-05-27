@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { Link } from "react-router-dom"
 import { getHowTos } from "../actions/howToActions"
 import styled from "styled-components";
 
@@ -45,9 +45,13 @@ function LandingPage(props) {
     <>
       <div>
         <p>Looking for Great Tutorials? You've come to the right place!</p>
-        <button>Sign Up</button>
+        <Link to="/signup">
+          <button>Sign Up</button>
+        </Link>
         <p>Already a Member?</p>
-        <button>Login</button>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
       </div>
       <HowToCards>
         {props.howTos.map((howTo) => {
