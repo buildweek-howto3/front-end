@@ -1,7 +1,7 @@
-import React from "react"
-import LandingPage from "./LandingPage"
-import { Route } from "react-router-dom"
-import styled from "styled-components"
+import React from "react";
+import LandingPage from "./LandingPage";
+import { Route } from "react-router-dom";
+import styled from "styled-components";
 
 
 import  PrivateRoute  from "../utils/PrivateRoute"
@@ -10,18 +10,14 @@ import Login from "./Login"
 import Signup from "./Signup"
 
 const ContentSection = styled.div`
-
-    height: 80vh;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    flex-flow: column;
-    background-color: lightblue;
-    width: 100%;
-
-
-`
-
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  background-color: lightblue;
+  width: 100%;
+`;
 
 export default function Content() {
     return (

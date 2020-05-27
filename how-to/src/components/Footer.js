@@ -20,8 +20,6 @@ export default function Footer() {
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
         <Link to="/signup">Signup</Link>
-        <Link to="/create-how-to">Create</Link>
-        <Link to="/favorites">Favorites</Link>
       </nav>
     </FooterSection>
   );
