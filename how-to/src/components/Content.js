@@ -3,7 +3,9 @@ import LandingPage from "./LandingPage"
 import { Route } from "react-router-dom"
 import styled from "styled-components"
 
-import CreateHowTo from "./CreateHowTo"
+
+import  PrivateRoute  from "../utils/PrivateRoute"
+import Profile from "./Profile"
 import Login from "./Login"
 import Signup from "./Signup"
 
@@ -33,9 +35,7 @@ export default function Content() {
             <Route path="/signup">
                 <Signup />
             </Route>
-            <Route path="/create-how-to">
-                <CreateHowTo />
-            </Route>
+           <PrivateRoute path="/profile" component={Profile} />
         </ContentSection>
     )
 }
