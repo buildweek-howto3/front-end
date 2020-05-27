@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import axios from 'axios';
-
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { getHowTos } from "../actions/howToActions"
 import styled from "styled-components";
 
 
@@ -38,14 +38,7 @@ function LandingPage(props) {
   // console.log(props);
 
   useEffect( () => {
-    axios
-    .get('https://howtobw.herokuapp.com/api/auth/posts')
-    .then(
-      console.log(res)
-    )
-    .catch(
-      err=> console.log(err)
-    )
+    props.getHowTos()
   }, [])
 
   return (
@@ -77,4 +70,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(LandingPage);
+export default connect(mapStateToProps, {getHowTos})(LandingPage);

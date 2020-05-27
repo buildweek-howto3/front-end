@@ -7,6 +7,7 @@ const ProfileContainer = styled.div`
   width: 100%;
   display: flex;
   max-height: 100%;
+  height: 100%;
   nav {
     width: 20%;
     display: flex;
@@ -17,14 +18,18 @@ const ProfileContainer = styled.div`
 
 const ProfileContent = styled.div`
   width: 100%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 function Profile() {
   return (
     <ProfileContainer>
       <ProfileContent>
-        Content goes here.
+        <Route exact path="/profile">
+          Content goes here.
+        </Route>
         <Route path="/profile/create-how-to">
           <CreateHowTo />
         </Route>
