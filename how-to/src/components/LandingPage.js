@@ -31,6 +31,8 @@ const HowToCard = styled.div`
 `;
 
 const Marketing = styled.div``
+
+
 function LandingPage(props) {
   // console.log(props);
   return (
