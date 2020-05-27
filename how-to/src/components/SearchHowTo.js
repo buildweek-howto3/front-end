@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 // STYLING ************
 const SearchForm = styled.form`
-    margin-top: 10rem;
-    margin-bottom: 10rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     display:flex;
     justify-content: center;
     align-items:center; 
