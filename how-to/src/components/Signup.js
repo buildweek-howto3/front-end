@@ -1,93 +1,71 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
-
+import React, { useState } from "react";
+import styled from "styled-components";
+import axios from "axios";
 
 // STYLING ************
 const SignupForm = styled.form`
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
 `;
 
 // CODE *********
 
+const initialSignupInputs = {
+  username: "",
+  password: "",
+};
+
 const Signup = () => {
-    const [signup, setSignup] = useState({
-        name: '',
-        email: '',
-        username: '', 
-        password: ''});
-    
-    const handleName = event => {
-        setSignup({...signup, name: event.target.value});
-    }    
+  const [signup, setSignup] = useState(initialSignupInputs);
 
-    const handleEmail = event => {
-        setSignup({...signup, email: event.target.value});
-    }
-    
-    const handleUsername = event => {
-        setSignup({...signup, username: event.target.value});
-    }
+  const captureSignup = (event) => {
+    setSignup({ 
+        ...signup, 
+        [event.target.name]: event.target.value 
+    });
+  };
 
-    const handlePassword = event => {
-        setSignup({...signup, password: event.target.value});
-    }
+  const registerUser = (event) => {
+    event.preventDefault();
+    axios.post("https://howtobw.herokuapp.com/api/auth/register", signup)
+    .then(res => {
+        console.log(res.data)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+  };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        
-       
-    }
+  return (
+    <div>
+      <SignupForm onSubmit={registerUser}>
 
-    return (
-        <div>
-            <SignupForm onSubmit={event => handleSubmit(event)}>
-                <label>
-                    Name:
-                    <input 
-                    type='text'
-                    name='name'
-                    placeholder="Name"
-                    value={signup.name}
-                    onChange={handleName}
-                    />
-                </label>
-                <label>
-                    Email:
-                    <input 
-                    type='text'
-                    name='email'
-                    placeholder="Email"
-                    value={signup.email}
-                    onChange={handleEmail}
-                    />
-                </label>
-                <label>
-                    UserName:
-                    <input 
-                    type='text'
-                    name='username'
-                    placeholder="Username"
-                    value={signup.username}
-                    onChange={handleUsername}
-                    />
-                </label>
-                <label>
-                    Password:
-                    <input 
-                    type='password'
-                    name='password'
-                    placeholder="Password"
-                    value={signup.password}
-                    onChange={handlePassword}
-                    />
-                </label>
-                    <button>Submit</button>
-            </SignupForm>
-        </div>
-    )
+        <label>
+          UserName:
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={signup.username}
+            onChange={captureSignup}
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={signup.password}
+            onChange={captureSignup}
+          />
+        </label>
+        <button>Submit</button>
+      </SignupForm>
+    </div>
+  );
 };
 
 export default Signup;

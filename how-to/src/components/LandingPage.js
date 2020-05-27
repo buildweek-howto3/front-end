@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import styled from "styled-components";
 
+
+
 const HowToCards = styled.section`
   width: 100%;
   display: flex;
@@ -32,7 +34,10 @@ function LandingPage(props) {
   return (
     <div>
       <div>
-        <h2>Sign UP</h2>
+        <p>Looking for Great Tutorials? You've come to the right place!</p>
+        <button>Sign Up</button>
+        <p>Already a Member?</p>
+        <button>Login</button>
       </div>
       <HowToCards>
         {props.howTos.map((howTo) => {
