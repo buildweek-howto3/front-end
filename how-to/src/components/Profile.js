@@ -14,6 +14,11 @@ const ProfileContainer = styled.div`
     display: flex;
     flex-flow: column;
     height: 100%;
+    background-color: navy;
+    a {
+      color: lightblue;
+      background-color: dodgerblue;
+    }
   }
 `;
 
