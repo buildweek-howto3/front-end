@@ -18,6 +18,19 @@ export const getUser = () => {
   }
 }
 
+export const getUserHowTos = (id) => {
+  return dispatch => {
+    axiosWithAuth()
+      .get(`https://howtobw.herokuapp.com/api/posts/user/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}
+
 export const getHowTos = () => {
    return dispatch => { 
     dispatch({ type: INITIAL_HOWTO_FETCH }) 
@@ -47,3 +60,11 @@ export const createHowTo = (newHowTo) => {
     })
   }
 }
+
+
+
+//get my howtows 
+
+//axios put 
+
+//myhowtos.  setup connect   .. props.id  ... import connect 
