@@ -39,7 +39,7 @@ function Profile(props) {
     <ProfileContainer>
       <ProfileContent>
         <Route exact path="/profile">
-          <p>Welcome {props.user}!</p>
+          <p>Welcome {props.username}!</p>
         </Route>
         <Route path="/profile/create-how-to">
           <CreateHowTo />
@@ -60,7 +60,7 @@ function Profile(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    user: state.user,
+    username: state.username,
   };
 };
 

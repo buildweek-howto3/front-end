@@ -2,14 +2,15 @@ import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 export const INITIAL_HOWTO_FETCH = "INITIAL_HOWTO_FETCH"
 export const HOWTO_FETCH_SUCCESS = "HOWTO_FETCH_SUCCESS"
+export const FETCH_USER_NAME = "FETCH_USER_NAME"
 
 export const getUser = () => {
   return dispatch => {
     axiosWithAuth()
       .get("https://howtobw.herokuapp.com/api/auth/users")
       .then((res) => {
-        console.log(res.data);
-        // dispatch({ type: })
+        console.log(res.data.currentUser);
+        dispatch({ type: FETCH_USER_NAME, payload: res.data.currentUser.username})
       })
       .catch((err) => {
         console.log(err);
