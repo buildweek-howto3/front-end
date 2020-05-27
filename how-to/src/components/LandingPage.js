@@ -29,10 +29,12 @@ const HowToCard = styled.div`
     margin-bottom: 5%;
   }
 `;
+
+const Marketing = styled.div``
 function LandingPage(props) {
   // console.log(props);
   return (
-    <div>
+    <>
       <div>
         <p>Looking for Great Tutorials? You've come to the right place!</p>
         <button>Sign Up</button>
@@ -50,7 +52,7 @@ function LandingPage(props) {
           );
         })}
       </HowToCards>
-    </div>
+    </>
   );
 }
 

@@ -41,7 +41,6 @@ const Signup = () => {
   return (
     <div>
       <SignupForm onSubmit={registerUser}>
-
         <label>
           UserName:
           <input
