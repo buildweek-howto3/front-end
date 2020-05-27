@@ -1,7 +1,8 @@
 import {
   HOWTO_FETCH_SUCCESS,
   INITIAL_HOWTO_FETCH,
-  FETCH_USER_NAME
+  FETCH_USER_NAME,
+  FETCH_USER_ID
 } from "../actions/howToActions";
 
 const initialState = {
@@ -29,6 +30,11 @@ export const howToReducer = (state = initialState, action) => {
       return {
         ...state,
         username: action.payload
+      };
+    case FETCH_USER_ID:
+      return {
+        ...state,
+        userId: action.payload
       };
     default:
       return state;

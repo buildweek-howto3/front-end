@@ -3,6 +3,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth"
 export const INITIAL_HOWTO_FETCH = "INITIAL_HOWTO_FETCH"
 export const HOWTO_FETCH_SUCCESS = "HOWTO_FETCH_SUCCESS"
 export const FETCH_USER_NAME = "FETCH_USER_NAME"
+export const FETCH_USER_ID = "FETCH_USER_ID"
 
 export const getUser = () => {
   return dispatch => {
@@ -11,6 +12,7 @@ export const getUser = () => {
       .then((res) => {
         console.log(res.data.currentUser);
         dispatch({ type: FETCH_USER_NAME, payload: res.data.currentUser.username})
+        dispatch({ type: FETCH_USER_ID, payload: res.data.currentUser.user_id})
       })
       .catch((err) => {
         console.log(err);
@@ -23,7 +25,7 @@ export const getUserHowTos = (id) => {
     axiosWithAuth()
       .get(`https://howtobw.herokuapp.com/api/posts/user/${id}`)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

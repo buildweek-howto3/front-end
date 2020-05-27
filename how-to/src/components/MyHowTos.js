@@ -3,7 +3,6 @@ import { getUserHowTos } from "../actions/howToActions";
 import { connect } from 'react-redux';
 
 function MyHowTos(props) {
-    const [userHowTos, setUserHowTos] = useState([])
  
     useEffect(() => {
       props.getUserHowTos(props.userId)
