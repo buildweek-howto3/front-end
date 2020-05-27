@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import axios from 'axios';
 
 import styled from "styled-components";
 
@@ -35,6 +36,18 @@ const Marketing = styled.div``
 
 function LandingPage(props) {
   // console.log(props);
+
+  useEffect( () => {
+    axios
+    .get('https://howtobw.herokuapp.com/api/auth/posts')
+    .then(
+      console.log(res)
+    )
+    .catch(
+      err=> console.log(err)
+    )
+  }, [])
+
   return (
     <>
       <div>
