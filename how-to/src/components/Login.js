@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 // STYLING ************
@@ -13,25 +14,34 @@ const LoginForm = styled.form`
 // CODE *********
 
 const Login = () => {
-    const [login, setLogin] = useState({username: '', password: ''});
+    const [login, setLogin] = useState({
+        username: '', 
+        password: ''
+    });
 
-    const handleUsername = event => {
-        setLogin({...login, username: event.target.value});
-    }
-
-    const handlePassword = event => {
-        setLogin({...login, password: event.target.value});
+    const handleChange = event => {
+        setLogin({...login, [event.target.name]: event.target.value});
     }
 
     const handleSubmit = event => {
         event.preventDefault();
+        axiosWithAuth().post(`https://howtobw.herokuapp.com/api/auth/login`, login)
+        .then(res => {
+            console.log(res.data.token);
+            localStorage.setItem('token', res.data.token);
+
+        })
+        .catch(err => {
+            console.log('error', err);
+        })
+        
         
        
     }
 
     return (
         <div>
-            <LoginForm onSubmit={event => handleSubmit(event)}>
+            <LoginForm onSubmit={handleSubmit}>
                 <label>
                     UserName:
                     <input 
@@ -39,7 +49,7 @@ const Login = () => {
                     name='username'
                     placeholder="Username"
                     value={login.username}
-                    onChange={handleUsername}
+                    onChange={handleChange}
                     />
                 </label>
                 <label>
@@ -49,7 +59,7 @@ const Login = () => {
                     name='password'
                     placeholder="Password"
                     value={login.password}
-                    onChange={handlePassword}
+                    onChange={handleChange}
                     />
                 </label>
                 <button>Submit</button>
