@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
@@ -14,6 +15,7 @@ const LoginForm = styled.form`
 // CODE *********
 
 const Login = () => {
+    const history = useHistory()
     const [login, setLogin] = useState({
         username: '', 
         password: ''
@@ -29,7 +31,7 @@ const Login = () => {
         .then(res => {
             console.log(res.data.token);
             localStorage.setItem('token', res.data.token);
-            history.pushState('/profile')
+            history.push('/profile')
 
         })
         .catch(err => {

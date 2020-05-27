@@ -43,6 +43,7 @@ const Header = () => {
             <div className='navLinks'> 
                 <Link to='/login'>Login</Link>
                 <Link to='/signup'>Signup</Link>
+                <Link to='/profile'>Profile</Link>
              </div>
         </HeaderSection>
     )
