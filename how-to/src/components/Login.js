@@ -29,7 +29,7 @@ const Login = () => {
         .then(res => {
             console.log(res.data.token);
             localStorage.setItem('token', res.data.token);
-            history.pushState('/profile')
+            history.push('/profile')
 
         })
         .catch(err => {
