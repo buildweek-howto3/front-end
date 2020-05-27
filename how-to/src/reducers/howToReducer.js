@@ -1,34 +1,16 @@
-const dummydata = {
-  howTos: [
-    {
-      id: "1",
-      category: "example category",
-      title: "example 1",
-      description: "this explains something",
-      materials: "",
-      steps: [
-        { id: "1", stepName: "step 1", stepDescription: "describes this step" },
-        { id: "2", stepName: "step 2", stepDescription: "describes this step" },
-        { id: "3", stepName: "step 3", stepDescription: "describes this step" },
-      ],
-    },
-    {
-      id: "2",
-      category: "example category",
-      title: "example 2",
-      description: "this explains something about the second example",
-      materials: "",
-      steps: [
-        { id: "1", stepNumber: "step 1", stepDescription: "describes this step" },
-        { id: "2", stepNumber: "step 2", stepDescription: "describes this step" },
-        { id: "3", stepNumber: "step 3", stepDescription: "describes this step" },
-      ],
-    },
-  ],
+import { HOWTO_FETCH_SUCCESS } from "../actions/howToActions"
+
+const initialState = {
+  isLoading: false,
+  howTos: []
 };
 
-export const howToReducer = (state = dummydata, action) => {
+export const howToReducer = (state = initialState, action) => {
   switch (action.type) {
+    case HOWTO_FETCH_SUCCESS: 
+      return {
+        howTos: action.payload
+      }
     default:
       return state;
   }
