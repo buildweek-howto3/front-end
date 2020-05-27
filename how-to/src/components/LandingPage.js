@@ -38,7 +38,18 @@ function LandingPage(props) {
   // console.log(props);
 
   useEffect( () => {
+<<<<<<< HEAD
+    axios
+    .get('https://howtobw.herokuapp.com/api/auth/posts')
+    .then( res => 
+      console.log(res)
+    )
+    .catch(
+      err => console.log(err)
+    )
+=======
     props.getHowTos()
+>>>>>>> 4825eac3256146d9a577723ac13db6b29c9e517b
   }, [])
 
   return (
