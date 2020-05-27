@@ -35,7 +35,7 @@ const Marketing = styled.div``
 function LandingPage(props) {
   // console.log(props);
 
-  useEffect( () => {
+  useEffect( (res) => {
     axios
     .get('https://howtobw.herokuapp.com/api/auth/posts')
     .then(
