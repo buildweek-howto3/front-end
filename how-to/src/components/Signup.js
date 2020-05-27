@@ -1,37 +1,93 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
+import styled from 'styled-components';
 
-const Register = () => {
-  const [registerInput, setRegisterInput] = useState("");
 
-  const handleRegisterInput = (event) => {};
+// STYLING ************
+const SignupForm = styled.form`
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+`;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+// CODE *********
 
-  return (
-    <div>
-        <h2>Register</h2>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={registerInput}
-          onChange={handleRegisterInput}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="text"
-          name="password"
-          value={registerInput}
-          onChange={handleRegisterInput}
-        />
+const Signup = () => {
+    const [signup, setSignup] = useState({
+        name: '',
+        email: '',
+        username: '', 
+        password: ''});
+    
+    const handleName = event => {
+        setSignup({...signup, name: event.target.value});
+    }    
 
-        <button>Register</button>
-      </form>
-    </div>
-  );
+    const handleEmail = event => {
+        setSignup({...signup, email: event.target.value});
+    }
+    
+    const handleUsername = event => {
+        setSignup({...signup, username: event.target.value});
+    }
+
+    const handlePassword = event => {
+        setSignup({...signup, password: event.target.value});
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        
+       
+    }
+
+    return (
+        <div>
+            <SignupForm onSubmit={event => handleSubmit(event)}>
+                <label>
+                    Name:
+                    <input 
+                    type='text'
+                    name='name'
+                    placeholder="Name"
+                    value={signup.name}
+                    onChange={handleName}
+                    />
+                </label>
+                <label>
+                    Email:
+                    <input 
+                    type='text'
+                    name='email'
+                    placeholder="Email"
+                    value={signup.email}
+                    onChange={handleEmail}
+                    />
+                </label>
+                <label>
+                    UserName:
+                    <input 
+                    type='text'
+                    name='username'
+                    placeholder="Username"
+                    value={signup.username}
+                    onChange={handleUsername}
+                    />
+                </label>
+                <label>
+                    Password:
+                    <input 
+                    type='password'
+                    name='password'
+                    placeholder="Password"
+                    value={signup.password}
+                    onChange={handlePassword}
+                    />
+                </label>
+                    <button>Submit</button>
+            </SignupForm>
+        </div>
+    )
 };
 
-export default Register;
+export default Signup;

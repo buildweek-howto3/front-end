@@ -1,37 +1,61 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
+import styled from 'styled-components';
 
-const initialLogin = {
-    username: "",
-    password: "",
-}
+
+// STYLING ************
+const LoginForm = styled.form`
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+`;
+
+// CODE *********
 
 const Login = () => {
-  const [loginInputs, setLoginInputs] = useState(initialLogin);
+    const [login, setLogin] = useState({username: '', password: ''});
 
-  const handleLoginInput = (event) => {
-    setLoginInputs({
-        loginInputs,
-        [event.target.name]: event.target.value
-    })
-  };
+    const handleUsername = event => {
+        setLogin({...login, username: event.target.value});
+    }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+    const handlePassword = event => {
+        setLogin({...login, password: event.target.value});
+    }
 
-  return (
-    <div>
-        <h2>Login</h2>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <label>Username:</label>
-        <input type="text" name="username" value={loginInputs.username} onChange={handleLoginInput} />
-        <label>Password:</label>
-        <input type="text" name="password" value={loginInputs.password} onChange={handleLoginInput} />
+    const handleSubmit = event => {
+        event.preventDefault();
+        
+       
+    }
 
-        <button>Login</button>
-      </form>
-    </div>
-  );
+    return (
+        <div>
+            <LoginForm onSubmit={event => handleSubmit(event)}>
+                <label>
+                    UserName:
+                    <input 
+                    type='text'
+                    name='username'
+                    placeholder="Username"
+                    value={login.username}
+                    onChange={handleUsername}
+                    />
+                </label>
+                <label>
+                    Password
+                    <input 
+                    type='password'
+                    name='password'
+                    placeholder="Password"
+                    value={login.password}
+                    onChange={handlePassword}
+                    />
+                </label>
+                <button>Submit</button>
+            </LoginForm>
+        </div>
+    )
 };
 
 export default Login;
