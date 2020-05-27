@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth"
 
-function MyHowTos() {
+function MyHowTos(props) {
     const [userHowTos, setUserHowTos] = useState([])
  
-  
     return (
     <div>
       <h2>example how to</h2>
