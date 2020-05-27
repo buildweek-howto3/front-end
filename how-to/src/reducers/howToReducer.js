@@ -1,7 +1,7 @@
 import {
   HOWTO_FETCH_SUCCESS,
   INITIAL_HOWTO_FETCH,
-  FETCH_USER_NAME,
+  FETCH_USER_NAME
 } from "../actions/howToActions";
 
 const initialState = {
@@ -9,6 +9,7 @@ const initialState = {
   howTos: [],
   currentUser: "",
   username: "",
+  userId: ""
 };
 
 export const howToReducer = (state = initialState, action) => {
