@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import CreateHowTo from "./CreateHowTo";
 import MyHowTos from "./MyHowTos";
 import styled from "styled-components";
+import { getUser } from "../actions/howToActions";
+import { connect } from "react-redux";
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -29,12 +31,15 @@ const ProfileContent = styled.div`
   align-items: center;
 `;
 
-function Profile() {
+function Profile(props) {
+  useEffect(() => {
+    props.getUser()
+  }, []);
   return (
     <ProfileContainer>
       <ProfileContent>
         <Route exact path="/profile">
-          Content goes here.
+          <p>Welcome {props.user}!</p>
         </Route>
         <Route path="/profile/create-how-to">
           <CreateHowTo />
@@ -52,4 +57,11 @@ function Profile() {
   );
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, { getUser })(Profile);

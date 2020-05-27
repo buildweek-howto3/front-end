@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom"
-import { getHowTos } from "../actions/howToActions"
+import { Link } from "react-router-dom";
+import { getHowTos } from "../actions/howToActions";
 import styled from "styled-components";
-
-
 
 const HowToCards = styled.section`
   width: 100%;
@@ -31,15 +29,14 @@ const HowToCard = styled.div`
   }
 `;
 
-const Marketing = styled.div``
-
+const Marketing = styled.div``;
 
 function LandingPage(props) {
   // console.log(props);
 
-  useEffect( () => {
-    props.getHowTos()
-  }, [])
+  useEffect(() => {
+    props.getHowTos();
+  }, []);
 
   return (
     <>
@@ -53,25 +50,31 @@ function LandingPage(props) {
           <button>Login</button>
         </Link>
       </div>
-      <HowToCards>
-        {props.howTos.map((howTo) => {
-          return (
-            <HowToCard key={howTo.id} className="howToCard">
-              <img />
-              <h2>{howTo.title}</h2>
-              <p>{howTo.description}</p>
-            </HowToCard>
-          );
-        })}
-      </HowToCards>
+      {props.loadingHowTos ? (
+        <p>fetching How Tos ....</p>
+      ): (
+        <HowToCards>
+          {props.howTos.map((howTo) => {
+            return (
+              <HowToCard key={howTo.id} className="howToCard">
+                <img />
+                <h2>{howTo.title}</h2>
+                <p>{howTo.description}</p>
+              </HowToCard>
+            );
+          })}{" "}
+        </HowToCards>
+      )}
     </>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
+    ...state,
+    loadingHowTos: state.loadingHowTos,
     howTos: state.howTos,
   };
 };
 
-export default connect(mapStateToProps, {getHowTos})(LandingPage);
+export default connect(mapStateToProps, { getHowTos })(LandingPage);

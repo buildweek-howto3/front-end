@@ -3,16 +3,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 function MyHowTos() {
     const [userHowTos, setUserHowTos] = useState([])
-  useEffect(() => {
-    axiosWithAuth()
-    .get("https://howtobw.herokuapp.com/api/posts/user/:id")
-    .then(res => {
-        console.log(res.data)
-    })
-    .catch(err => {
-        console.log(err)
-    })
-  }, [])
+ 
   
     return (
     <div>
