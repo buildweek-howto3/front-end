@@ -38,11 +38,11 @@ function LandingPage(props) {
   useEffect( () => {
     axios
     .get('https://howtobw.herokuapp.com/api/auth/posts')
-    .then(
+    .then( res => 
       console.log(res)
     )
     .catch(
-      err=> console.log(err)
+      err => console.log(err)
     )
   }, [])
 
