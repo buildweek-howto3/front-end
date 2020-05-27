@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { getHowTos } from "../actions/howToActions"
+import { Link } from "react-router-dom";
+import { getHowTos } from "../actions/howToActions";
 import styled from "styled-components";
-
-
 
 const HowToCards = styled.section`
   width: 100%;
@@ -31,43 +29,52 @@ const HowToCard = styled.div`
   }
 `;
 
-const Marketing = styled.div``
-
+const Marketing = styled.div``;
 
 function LandingPage(props) {
   // console.log(props);
 
-  useEffect( () => {
-    props.getHowTos()
-  }, [])
+  useEffect(() => {
+    props.getHowTos();
+  }, []);
 
   return (
     <>
       <div>
         <p>Looking for Great Tutorials? You've come to the right place!</p>
-        <button>Sign Up</button>
+        <Link to="/signup">
+          <button>Sign Up</button>
+        </Link>
         <p>Already a Member?</p>
-        <button>Login</button>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
       </div>
-      <HowToCards>
-        {props.howTos.map((howTo) => {
-          return (
-            <HowToCard key={howTo.id} className="howToCard">
-              <img />
-              <h2>{howTo.title}</h2>
-              <p>{howTo.description}</p>
-            </HowToCard>
-          );
-        })}
-      </HowToCards>
+      {props.loadingHowTos ? (
+        <p>fetching How Tos ....</p>
+      ): (
+        <HowToCards>
+          {props.howTos.map((howTo) => {
+            return (
+              <HowToCard key={howTo.id} className="howToCard">
+                <img />
+                <h2>{howTo.title}</h2>
+                <p>{howTo.description}</p>
+              </HowToCard>
+            );
+          })}{" "}
+        </HowToCards>
+      )}
     </>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
+    ...state,
+    loadingHowTos: state.loadingHowTos,
     howTos: state.howTos,
   };
 };
 
-export default connect(mapStateToProps, {getHowTos})(LandingPage);
+export default connect(mapStateToProps, { getHowTos })(LandingPage);
