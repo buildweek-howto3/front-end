@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 // STYLING ************
 const SignupForm = styled.form`
@@ -29,7 +29,8 @@ const Signup = () => {
 
   const registerUser = (event) => {
     event.preventDefault();
-    axios.post("https://howtobw.herokuapp.com/api/auth/register", signup)
+    axiosWithAuth()
+    .post("https://howtobw.herokuapp.com/api/auth/register", signup)
     .then(res => {
         console.log(res.data)
     })
