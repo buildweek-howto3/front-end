@@ -33,28 +33,29 @@ function MyHowTos(props) {
   };
   return (
     <div>
-      {props.userHowTos.map((item) => {
-        return (
-          <div>
-            {editing ? (
-              <form>
-                <label>Title:</label>
-                <input placeholder={item.title} />
-                <label>Description:</label>
-                <input placeholder={item.description} />
-              </form>
-            ) : (
-              <div>
-                <h2>Title: {item.title}</h2>
-                <p> Description: {item.description}</p>
-              </div>
-            )}
-
-            <button onClick={() => editHowTo(item.postId)}>Edit</button>
-            <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
-          </div>
-        );
-      })}
+      <p>Please Create More How Tos!</p>
+        {props.userHowTos.map((item) => {
+          return (
+            <div>
+              {editing ? (
+                <form>
+                  <label>Title:</label>
+                  <input placeholder={item.title} />
+                  <label>Description:</label>
+                  <input placeholder={item.description} />
+                </form>
+              ) : (
+                <div>
+                  <h2>Title: {item.title}</h2>
+                  <p> Description: {item.description}</p>
+                </div>
+              )}
+  
+              <button onClick={() => editHowTo(item.postId)}>Edit</button>
+              <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
+            </div>
+          );
+        })}
     </div>
   );
 }
