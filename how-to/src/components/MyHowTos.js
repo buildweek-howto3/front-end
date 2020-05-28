@@ -18,6 +18,12 @@ function MyHowTos(props) {
     console.log(id);
     setEditing(!editing);
   };
+  
+  const submitChangedHowTo = () => {
+    axiosWithAuth()
+    .put()
+    .then() 
+  }
 
   const deleteHowTo = (id) => {
     console.log(id);
@@ -51,7 +57,7 @@ function MyHowTos(props) {
                 </div>
               )}
   
-              <button onClick={() => editHowTo(item.postId)}>Edit</button>
+              {editing ? <button onClick={() => editHowTo(item.postId)}>Submit</button> : <button onClick={() => editHowTo(item.postId)}>Edit</button>}
               <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
             </div>
           );
