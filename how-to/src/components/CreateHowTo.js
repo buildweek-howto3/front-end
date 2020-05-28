@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createHowTo } from "../actions/howToActions"
 import { useHistory } from "react-router-dom"
+import styled from "styled-components"
+
 
 const initialNewHowTo = {
   title: "",
@@ -34,6 +36,7 @@ function CreateHowTo(props) {
 
   return (
     <form onSubmit={addHowTo}>
+      <h2>New How To</h2>
       <label htmlFor="title">Title:</label>
       <input
         name="title"

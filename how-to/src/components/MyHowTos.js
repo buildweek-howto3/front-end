@@ -16,7 +16,7 @@ function MyHowTos(props) {
   useEffect(() => {
     props.getUserHowTos(props.userId);
   }, [loadingUserHowTos]);
-  // console.log(props.userHowTos);
+  console.log(props.userHowTos);
 
   const editHowTo = (e) => {
     // console.log(id);
