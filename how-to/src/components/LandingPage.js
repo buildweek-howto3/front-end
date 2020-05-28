@@ -5,6 +5,8 @@ import { getHowTos } from "../actions/howToActions";
 import styled from "styled-components";
 
 const HowToCards = styled.section`
+  margin-top: 1%;
+  margin-bottom: 1%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -13,19 +15,21 @@ const HowToCards = styled.section`
 const HowToCard = styled.div`
   width: 20%;
   display: flex;
-  flex-flow: column;
+  flex-flow: row wrap;
   align-items: center;
   padding: 1%;
   h2,
   p {
+    padding: 1%;
     width: 80%;
+    margin: 0 auto;
   }
 
   img {
     width: 200px;
     height: 200px;
     background-color: navy;
-    margin-bottom: 5%;
+    margin: 0 auto;
   }
 `;
 
@@ -34,15 +38,9 @@ const Marketing = styled.div``;
 function LandingPage(props) {
   // console.log(props);
 
-<<<<<<< HEAD
-  useEffect( () => {
-    props.getHowTos()
-  }, [])
-=======
   useEffect(() => {
     props.getHowTos();
   }, []);
->>>>>>> b95e8a71c32e73421bc42382b6fa706de317b29c
 
   return (
     <>
