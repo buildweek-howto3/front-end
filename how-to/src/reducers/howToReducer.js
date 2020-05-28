@@ -9,7 +9,6 @@ import {
 const initialState = {
   loadingHowTos: false,
   howTos: [],
-  currentUser: "",
   username: "",
   userId: "",
   userHowTos: []
@@ -39,10 +38,18 @@ export const howToReducer = (state = initialState, action) => {
         userId: action.payload
       };
       case FETCH_USER_HOWTOS:
-        return {
-          ...state,
-          userHowTos: action.payload
+        if (action.payload === "") {
+          return {
+            ...state,
+            userHowTos: [action.payload]
+          }
+        } else {
+          return {
+            ...state,
+            userHowTos: action.payload
+          }
         }
+        
     default:
       return state;
   }

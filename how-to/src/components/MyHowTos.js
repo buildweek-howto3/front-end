@@ -3,17 +3,21 @@ import { getUserHowTos } from "../actions/howToActions";
 import { connect } from "react-redux";
 
 function MyHowTos(props) {
-//  console.log(props.userId)
+  //  console.log(props.userId)
+// console.log(props.userHowTos)
+  const id = props.userId
   useEffect(() => {
-    props.getUserHowTos(props.userId);
+    props.getUserHowTos(id);
   }, []);
-  console.log(props.userHowTos)
+  console.log(props.userHowTos);
   return (
     <div>
-      {props.userHowTos.map(item => {
+      {props.userHowTos.map((item) => {
         return (
-        <div>{item.title}</div>
-        )
+          <div>
+            <h2>{item.title}</h2>
+          </div>
+        );
       })}
     </div>
   );
