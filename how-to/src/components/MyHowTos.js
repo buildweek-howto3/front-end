@@ -3,13 +3,14 @@ import { getUserHowTos } from "../actions/howToActions";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
+import { useParams } from "react-router-dom"
 
 const UserHowToCard = styled.div`
   width: 20%;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  height: 60vh;
+  /* height: 60vh; */
   border: 2px solid navy;
   border-radius: 1rem;
   form {
@@ -20,11 +21,12 @@ const UserHowToCard = styled.div`
 `;
 const UserHowToContainer = styled.div`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  /* margin-bottom: 5%; */
   h2 {
     top: 0;
     margin-bottom: 5%;
@@ -35,8 +37,12 @@ const UserHowToContainer = styled.div`
     flex-flow: row wrap;
     justify-content: space-around;
   }
+  form {
+    margin-top: 5%;
+  }
 `;
 function MyHowTos(props) {
+  // const { id } = useParams()
   //  console.log(props.userId)
   // console.log(props.userHowTos)
   const [loadingUserHowTos, setLoadingUserHowTos] = useState(false);
@@ -45,21 +51,23 @@ function MyHowTos(props) {
     title: "",
     description: "",
   });
+  const [userId, setUserId] = useState("")
 
   useEffect(() => {
     props.getUserHowTos(props.userId);
   }, [loadingUserHowTos, editing]);
-  console.log(props.userHowTos);
+  // console.log(props.userHowTos);
 
-  const editHowTo = (itemTitle, itemDescription) => {
+  const editHowTo = (itemTitle, itemDescription, itemId) => {
     // console.log(id);
     //only turn on editing for a single item
-    setEditing(!editing);
+    setEditing(true);
     setEditInputs({
       ...editInputs,
       title: itemTitle,
       description: itemDescription
     })
+    setUserId(itemId)
   };
 
   const changeHowTo = (e) => {
@@ -68,13 +76,9 @@ function MyHowTos(props) {
       [e.target.name]: e.target.value,
     });
   };
-  const submitChangedHowTo = (id) => {
-    const changedHowTo = {
-      title: editInputs.title,
-      description: editInputs.description,
-    };
+  const submitChangedHowTo = () => {
     axiosWithAuth()
-      .put(`https://howtobw.herokuapp.com/api/posts/${id}`, changedHowTo)
+      .put(`https://howtobw.herokuapp.com/api/posts/${userId}`, editInputs)
       .then((res) => {
         console.log(res);
         setLoadingUserHowTos(!loadingUserHowTos);
@@ -90,7 +94,7 @@ function MyHowTos(props) {
     axiosWithAuth()
       .delete(`https://howtobw.herokuapp.com/api/posts/${id}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setLoadingUserHowTos(!loadingUserHowTos);
       })
       .catch((err) => {
@@ -107,7 +111,7 @@ function MyHowTos(props) {
               <UserHowToCard>
                 <h2>Title: {item.title}</h2>
                 <p> Description: {item.description}</p>
-                <button onClick={() => editHowTo(item.title, item.description)}>
+                <button onClick={() => editHowTo(item.title, item.description, item.postId)}>
                   Edit
                 </button>
                 <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
@@ -116,17 +120,20 @@ function MyHowTos(props) {
           })}
       </div>
       {editing && (
-        <form>
+        <form onSubmit={() => submitChangedHowTo()}>
           <label htmlFor="title">Title:</label>
           <input 
           name="title"
           value={editInputs.title}
+          onChange={changeHowTo}
           />
           <label htmlFor="description">Description:</label>
           <input 
           name="description"
           value={editInputs.description}
+          onChange={changeHowTo}
           />
+          <button>Submit</button>
         </form>
       )}
     </UserHowToContainer>
