@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createHowTo } from "../actions/howToActions"
+import { useHistory } from "react-router-dom"
 
 const initialNewHowTo = {
   title: "",
@@ -8,6 +9,7 @@ const initialNewHowTo = {
 };
 
 function CreateHowTo(props) {
+  const { push } = useHistory()
 //   console.log(props);
   const [newHowToInputs, setNewHowToInputs] = useState(initialNewHowTo);
 
@@ -26,6 +28,7 @@ function CreateHowTo(props) {
       }
       props.createHowTo(newHowTo)
       setNewHowToInputs(initialNewHowTo)
+      push("/profile/my-how-tos")
   }
 
 

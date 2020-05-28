@@ -11,7 +11,8 @@ const initialState = {
   howTos: [],
   username: "",
   userId: "",
-  userHowTos: []
+  userHowTos: [],
+  
 };
 
 export const howToReducer = (state = initialState, action) => {
