@@ -12,8 +12,25 @@ const UserHowToCard = styled.div`
   height: 60vh;
   border: 2px solid navy;
   border-radius: 1rem;
+  form {
+    display: flex;
+    flex-flow:column;
+    align-items: center;
+  }
 `
+const UserHowToContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    top: 0;
+    margin-bottom: 5%;
+  }
 
+`
 function MyHowTos(props) {
   //  console.log(props.userId)
   // console.log(props.userHowTos)
@@ -49,11 +66,12 @@ function MyHowTos(props) {
       .put(`https://howtobw.herokuapp.com/api/posts/${id}`, changedHowTo)
       .then((res) => {
         console.log(res);
-        setEditing(!editing);
+        
       })
       .catch((err) => {
         console.log(err);
       });
+      setEditing(!editing);
   };
 
   const deleteHowTo = (id) => {
@@ -69,12 +87,12 @@ function MyHowTos(props) {
       });
   };
   return (
-    <UserHowToCard>
+    <UserHowToContainer>
       <h2>Please Create More How Tos!</h2>
       {props.userHowTos &&
         props.userHowTos.map((item) => {
           return (
-            <div>
+            <UserHowToCard>
               {editing ? (
                 <form>
                   <label htmlFor="title">Title:</label>
@@ -97,18 +115,20 @@ function MyHowTos(props) {
                 </div>
               )}
 
-              {editing ? (
-                <button onClick={() => submitChangedHowTo(item.postId)}>
-                  Submit
-                </button>
-              ) : (
-                <button onClick={() => editHowTo(item.postId)}>Edit</button>
-              )}
-              <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
-            </div>
+              <div>
+                {editing ? (
+                  <button onClick={() => submitChangedHowTo(item.postId)}>
+                    Submit
+                  </button>
+                ) : (
+                  <button onClick={() => editHowTo(item.postId)}>Edit</button>
+                )}
+                <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
+              </div>
+            </UserHowToCard>
           );
         })}
-    </UserHowToCard>
+    </UserHowToContainer>
   );
 }
 const mapStateToProps = (state) => {
