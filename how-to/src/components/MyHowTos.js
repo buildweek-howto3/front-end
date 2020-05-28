@@ -29,6 +29,12 @@ const UserHowToContainer = styled.div`
     top: 0;
     margin-bottom: 5%;
   }
+  .cardContainer {
+    width:100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
 
 `
 function MyHowTos(props) {
@@ -43,7 +49,7 @@ function MyHowTos(props) {
 
   useEffect(() => {
     props.getUserHowTos(props.userId);
-  }, [loadingUserHowTos]);
+  }, [loadingUserHowTos, editing]);
   console.log(props.userHowTos);
 
   const editHowTo = (e) => {
@@ -89,45 +95,47 @@ function MyHowTos(props) {
   return (
     <UserHowToContainer>
       <h2>Please Create More How Tos!</h2>
-      {props.userHowTos &&
-        props.userHowTos.map((item) => {
-          return (
-            <UserHowToCard>
-              {editing ? (
-                <form>
-                  <label htmlFor="title">Title:</label>
-                  <input
-                    name="title"
-                    value={editInputs.title}
-                    onChange={changeHowTo}
-                  />
-                  <label htmlFor="description">Description:</label>
-                  <input
-                    name="description"
-                    value={editInputs.description}
-                    onChange={changeHowTo}
-                  />
-                </form>
-              ) : (
-                <div>
-                  <h2>Title: {item.title}</h2>
-                  <p> Description: {item.description}</p>
-                </div>
-              )}
-
-              <div>
+      <div className="cardContainer">
+        {props.userHowTos &&
+          props.userHowTos.map((item) => {
+            return (
+              <UserHowToCard>
                 {editing ? (
-                  <button onClick={() => submitChangedHowTo(item.postId)}>
-                    Submit
-                  </button>
+                  <form>
+                    <label htmlFor="title">Title:</label>
+                    <input
+                      name="title"
+                      value={editInputs.title}
+                      onChange={changeHowTo}
+                    />
+                    <label htmlFor="description">Description:</label>
+                    <input
+                      name="description"
+                      value={editInputs.description}
+                      onChange={changeHowTo}
+                    />
+                  </form>
                 ) : (
-                  <button onClick={() => editHowTo(item.postId)}>Edit</button>
+                  <div>
+                    <h2>Title: {item.title}</h2>
+                    <p> Description: {item.description}</p>
+                  </div>
                 )}
-                <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
-              </div>
-            </UserHowToCard>
-          );
-        })}
+  
+                <div>
+                  {editing ? (
+                    <button onClick={() => submitChangedHowTo(item.postId)}>
+                      Submit
+                    </button>
+                  ) : (
+                    <button onClick={() => editHowTo(item.postId)}>Edit</button>
+                  )}
+                  <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
+                </div>
+              </UserHowToCard>
+            );
+          })}
+      </div>
     </UserHowToContainer>
   );
 }
