@@ -8,6 +8,9 @@ const FooterSection = styled.footer`
   justify-content: center;
   align-items: center;
   background-color: dodgerblue;
+  /* position: fixed;
+  bottom: 0; */
+  width:100%;
   p {
       color: lightgray;
   }
