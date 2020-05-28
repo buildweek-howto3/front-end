@@ -3,48 +3,36 @@ import { getUserHowTos } from "../actions/howToActions";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
-import { useParams } from "react-router-dom"
 
 const UserHowToCard = styled.div`
   width: 20%;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  /* height: 60vh; */
   border: 2px solid navy;
   border-radius: 1rem;
-  form {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-  }
+  
+  
 `;
 const UserHowToContainer = styled.div`
   width: 100%;
-  /* height: 100%; */
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 5%; */
-  h2 {
-    top: 0;
-    margin-bottom: 5%;
-  }
+  
   .cardContainer {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
   }
-  form {
-    margin-top: 5%;
-  }
+ 
 `;
+
+
 function MyHowTos(props) {
-  // const { id } = useParams()
-  //  console.log(props.userId)
-  // console.log(props.userHowTos)
+
   const [loadingUserHowTos, setLoadingUserHowTos] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editInputs, setEditInputs] = useState({
@@ -111,6 +99,8 @@ function MyHowTos(props) {
               <UserHowToCard>
                 <h2>Title: {item.title}</h2>
                 <p> Description: {item.description}</p>
+                <p> Materials: {item.materials}</p>
+                <p> Instructions: {item.instructions}</p>
                 <button onClick={() => editHowTo(item.title, item.description, item.postId)}>
                   Edit
                 </button>

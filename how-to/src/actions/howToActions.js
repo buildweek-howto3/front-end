@@ -13,7 +13,7 @@ export const getUser = () => {
     axiosWithAuth()
       .get("https://howtobw.herokuapp.com/api/auth/users")
       .then((res) => {
-        console.log(res.data.currentUser);
+        // console.log(res.data.currentUser);
         dispatch({ type: FETCH_USER_NAME, payload: res.data.currentUser.username})
         dispatch({ type: FETCH_USER_ID, payload: res.data.currentUser.user_id})
       })
@@ -28,7 +28,7 @@ export const getUserHowTos = (id) => {
     await axiosWithAuth()
       .get(`https://howtobw.herokuapp.com/api/posts/user/${id}`)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         dispatch({ type: FETCH_USER_HOWTOS, payload: res.data })
       })
       .catch((err) => {

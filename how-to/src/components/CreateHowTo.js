@@ -32,6 +32,8 @@ const CreateForm = styled.form`
 const initialNewHowTo = {
   title: "",
   description: "",
+  materials: "",
+  instructions: ""
 };
 
 function CreateHowTo(props) {
@@ -50,7 +52,9 @@ function CreateHowTo(props) {
       e.preventDefault()
       const newHowTo = {
         title: newHowToInputs.title,
-        description: newHowToInputs.description
+        description: newHowToInputs.description,
+        materials: newHowToInputs.materials,
+        instructions: newHowToInputs.instructions
       }
       props.createHowTo(newHowTo)
       setNewHowToInputs(initialNewHowTo)
@@ -71,6 +75,18 @@ function CreateHowTo(props) {
       <input
         name="description"
         value={newHowToInputs.description}
+        onChange={captureNewHowTo}
+      />
+      <label htmlFor="materials">Materials:</label>
+      <input
+        name="materials"
+        value={newHowToInputs.materials}
+        onChange={captureNewHowTo}
+      />
+      <label htmlFor="instructions">Instructions:</label>
+      <input
+        name="instructions"
+        value={newHowToInputs.instructions}
         onChange={captureNewHowTo}
       />
       <button>Submit</button>
