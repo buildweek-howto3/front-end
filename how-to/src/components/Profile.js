@@ -9,8 +9,9 @@ import { connect } from "react-redux";
 const ProfileContainer = styled.div`
   width: 100%;
   display: flex;
-  max-height: 100%;
-  height: 100%;
+  height: 80vh;
+  /* max-height: 100%; */
+  /* height: 100%; */
   nav {
     width: 15%;
     display: flex;
@@ -46,7 +47,7 @@ function Profile(props) {
     <ProfileContainer>
       <ProfileContent>
         <Route exact path="/profile">
-          <p>Welcome {props.username}!</p>
+          <h2>Welcome {props.username}!</h2>
         </Route>
         <Route path="/profile/create-how-to">
           <CreateHowTo />
