@@ -12,14 +12,21 @@ const ProfileContainer = styled.div`
   max-height: 100%;
   height: 100%;
   nav {
-    width: 20%;
+    width: 15%;
     display: flex;
     flex-flow: column;
+    align-items: center;
     height: 100%;
     background-color: navy;
     a {
       color: lightblue;
       background-color: dodgerblue;
+      width: 50%;
+      padding: 1rem;
+      &:hover {
+        background-color: skyblue;
+        color: navy;
+      }
     }
   }
 `;

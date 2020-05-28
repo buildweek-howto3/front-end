@@ -12,7 +12,7 @@ function CreateHowTo(props) {
   const { push } = useHistory()
 //   console.log(props);
   const [newHowToInputs, setNewHowToInputs] = useState(initialNewHowTo);
-
+  const [edit, setEdit] = useState(false)
   const captureNewHowTo = (e) => {
     setNewHowToInputs({
       ...newHowToInputs,
