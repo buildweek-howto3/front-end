@@ -4,13 +4,15 @@ export const INITIAL_HOWTO_FETCH = "INITIAL_HOWTO_FETCH"
 export const HOWTO_FETCH_SUCCESS = "HOWTO_FETCH_SUCCESS"
 export const FETCH_USER_NAME = "FETCH_USER_NAME"
 export const FETCH_USER_ID = "FETCH_USER_ID"
+export const FETCH_USER_HOWTOS = "FETCH_USER_HOWTOS"
+
 
 export const getUser = () => {
   return dispatch => {
     axiosWithAuth()
       .get("https://howtobw.herokuapp.com/api/auth/users")
       .then((res) => {
-        console.log(res.data.currentUser);
+        // console.log(res.data.currentUser);
         dispatch({ type: FETCH_USER_NAME, payload: res.data.currentUser.username})
         dispatch({ type: FETCH_USER_ID, payload: res.data.currentUser.user_id})
       })
@@ -26,6 +28,7 @@ export const getUserHowTos = (id) => {
       .get(`https://howtobw.herokuapp.com/api/posts/user/${id}`)
       .then((res) => {
         console.log(res.data);
+        dispatch({ type: FETCH_USER_HOWTOS, payload: res.data })
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +43,7 @@ export const getHowTos = () => {
     axiosWithAuth()
     .get('https://howtobw.herokuapp.com/api/posts')
     .then(res => {
-      console.log(res.data.data)
+      // console.log(res.data.data)
       dispatch({ type: HOWTO_FETCH_SUCCESS, payload: res.data.data })
     }
     )

@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { getUserHowTos } from "../actions/howToActions"; 
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { getUserHowTos } from "../actions/howToActions";
+import { connect } from "react-redux";
 
 function MyHowTos(props) {
- 
-    useEffect(() => {
-      props.getUserHowTos(props.userId)
-    },[]) 
-  
-    return (
+//  console.log(props.userId)
+  useEffect(() => {
+    props.getUserHowTos(props.userId);
+  }, []);
+  console.log(props.userHowTos)
+  return (
     <div>
-      <h2>example how to</h2>
-      <p>description</p>
-      <button>add step</button>
-      <button>Edit</button>
-      <button>Delete</button>
+      {props.userHowTos.map(item => {
+        return (
+        <div>{item.title}</div>
+        )
+      })}
     </div>
   );
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    userId: state.userId
-  }
-}
+    ...state,
+    userId: state.userId,
+    userHowTos: state.userHowTos
+  };
+};
 
-export default connect(mapStateToProps, { getUserHowTos })(MyHowTos)
-
-
+export default connect(mapStateToProps, { getUserHowTos })(MyHowTos);

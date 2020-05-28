@@ -29,20 +29,14 @@ const HowToCard = styled.div`
   }
 `;
 
-const Marketing = styled.div``;
+
 
 function LandingPage(props) {
   // console.log(props);
 
-<<<<<<< HEAD
-  useEffect( () => {
-    props.getHowTos()
-  }, [])
-=======
   useEffect(() => {
     props.getHowTos();
   }, []);
->>>>>>> b95e8a71c32e73421bc42382b6fa706de317b29c
 
   return (
     <>
@@ -68,7 +62,7 @@ function LandingPage(props) {
                 <p>{howTo.description}</p>
               </HowToCard>
             );
-          })}{" "}
+          })}
         </HowToCards>
       )}
     </>
