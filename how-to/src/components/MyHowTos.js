@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getUserHowTos } from "../actions/howToActions";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import styled from "styled-components"
+import styled from "styled-components";
 
 const UserHowToCard = styled.div`
   width: 20%;
@@ -14,10 +14,10 @@ const UserHowToCard = styled.div`
   border-radius: 1rem;
   form {
     display: flex;
-    flex-flow:column;
+    flex-flow: column;
     align-items: center;
   }
-`
+`;
 const UserHowToContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -30,13 +30,12 @@ const UserHowToContainer = styled.div`
     margin-bottom: 5%;
   }
   .cardContainer {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
   }
-
-`
+`;
 function MyHowTos(props) {
   //  console.log(props.userId)
   // console.log(props.userHowTos)
@@ -52,14 +51,20 @@ function MyHowTos(props) {
   }, [loadingUserHowTos, editing]);
   console.log(props.userHowTos);
 
-  const editHowTo = (e) => {
+  const editHowTo = (itemTitle, itemDescription) => {
     // console.log(id);
+    //only turn on editing for a single item
     setEditing(!editing);
+    setEditInputs({
+      ...editInputs,
+      title: itemTitle,
+      description: itemDescription
+    })
   };
 
   const changeHowTo = (e) => {
     setEditInputs({
-      ...editInputs,
+      ...editHowTo,
       [e.target.name]: e.target.value,
     });
   };
@@ -72,12 +77,12 @@ function MyHowTos(props) {
       .put(`https://howtobw.herokuapp.com/api/posts/${id}`, changedHowTo)
       .then((res) => {
         console.log(res);
-        
+        setLoadingUserHowTos(!loadingUserHowTos);
       })
       .catch((err) => {
         console.log(err);
       });
-      setEditing(!editing);
+    setEditing(!editing);
   };
 
   const deleteHowTo = (id) => {
@@ -100,42 +105,30 @@ function MyHowTos(props) {
           props.userHowTos.map((item) => {
             return (
               <UserHowToCard>
-                {editing ? (
-                  <form>
-                    <label htmlFor="title">Title:</label>
-                    <input
-                      name="title"
-                      value={editInputs.title}
-                      onChange={changeHowTo}
-                    />
-                    <label htmlFor="description">Description:</label>
-                    <input
-                      name="description"
-                      value={editInputs.description}
-                      onChange={changeHowTo}
-                    />
-                  </form>
-                ) : (
-                  <div>
-                    <h2>Title: {item.title}</h2>
-                    <p> Description: {item.description}</p>
-                  </div>
-                )}
-  
-                <div>
-                  {editing ? (
-                    <button onClick={() => submitChangedHowTo(item.postId)}>
-                      Submit
-                    </button>
-                  ) : (
-                    <button onClick={() => editHowTo(item.postId)}>Edit</button>
-                  )}
-                  <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
-                </div>
+                <h2>Title: {item.title}</h2>
+                <p> Description: {item.description}</p>
+                <button onClick={() => editHowTo(item.title, item.description)}>
+                  Edit
+                </button>
+                <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
               </UserHowToCard>
             );
           })}
       </div>
+      {editing && (
+        <form>
+          <label htmlFor="title">Title:</label>
+          <input 
+          name="title"
+          value={editInputs.title}
+          />
+          <label htmlFor="description">Description:</label>
+          <input 
+          name="description"
+          value={editInputs.description}
+          />
+        </form>
+      )}
     </UserHowToContainer>
   );
 }
