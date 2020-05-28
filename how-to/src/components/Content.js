@@ -10,7 +10,7 @@ import Login from "./Login"
 import Signup from "./Signup"
 
 const ContentSection = styled.div`
-  height: 80vh;
+  
   display: flex;
   justify-content: center;
   align-items: center;
