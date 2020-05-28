@@ -11,35 +11,32 @@ const UserHowToCard = styled.div`
   justify-content: space-around;
   border: 2px solid navy;
   border-radius: 1rem;
-  
-  
 `;
+
 const UserHowToContainer = styled.div`
+  height: 100%;
   width: 100%;
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  
+
   .cardContainer {
     width: 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: wrap;
     justify-content: space-around;
   }
- 
 `;
 
-
 function MyHowTos(props) {
-
   const [loadingUserHowTos, setLoadingUserHowTos] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editInputs, setEditInputs] = useState({
     title: "",
     description: "",
   });
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     props.getUserHowTos(props.userId);
@@ -53,9 +50,9 @@ function MyHowTos(props) {
     setEditInputs({
       ...editInputs,
       title: itemTitle,
-      description: itemDescription
-    })
-    setUserId(itemId)
+      description: itemDescription,
+    });
+    setUserId(itemId);
   };
 
   const changeHowTo = (e) => {
@@ -101,7 +98,11 @@ function MyHowTos(props) {
                 <p> Description: {item.description}</p>
                 <p> Materials: {item.materials}</p>
                 <p> Instructions: {item.instructions}</p>
-                <button onClick={() => editHowTo(item.title, item.description, item.postId)}>
+                <button
+                  onClick={() =>
+                    editHowTo(item.title, item.description, item.postId)
+                  }
+                >
                   Edit
                 </button>
                 <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
@@ -112,16 +113,12 @@ function MyHowTos(props) {
       {editing && (
         <form onSubmit={() => submitChangedHowTo()}>
           <label htmlFor="title">Title:</label>
-          <input 
-          name="title"
-          value={editInputs.title}
-          onChange={changeHowTo}
-          />
+          <input name="title" value={editInputs.title} onChange={changeHowTo} />
           <label htmlFor="description">Description:</label>
-          <input 
-          name="description"
-          value={editInputs.description}
-          onChange={changeHowTo}
+          <input
+            name="description"
+            value={editInputs.description}
+            onChange={changeHowTo}
           />
           <button>Submit</button>
         </form>
