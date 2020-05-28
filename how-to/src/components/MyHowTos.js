@@ -8,22 +8,42 @@ function MyHowTos(props) {
   // console.log(props.userHowTos)
   const [loadingUserHowTos, setLoadingUserHowTos] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [editInputs, setEditInputs] = useState({
+    title: "",
+    description: "",
+  });
 
   useEffect(() => {
     props.getUserHowTos(props.userId);
-  }, [loadingUserHowTos, props.howTos]);
-  console.log(props.userHowTos);
+  }, [loadingUserHowTos]);
+  // console.log(props.userHowTos);
 
-  const editHowTo = (id) => {
-    console.log(id);
+  const editHowTo = (e) => {
+    // console.log(id);
     setEditing(!editing);
   };
-  
-  const submitChangedHowTo = () => {
+
+  const changeHowTo = (e) => {
+    setEditInputs({
+      ...editInputs,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const submitChangedHowTo = (id) => {
+    const changedHowTo = {
+      title: editInputs.title,
+      description: editInputs.description,
+    };
     axiosWithAuth()
-    .put()
-    .then() 
-  }
+      .put(`https://howtobw.herokuapp.com/api/posts/${id}`, changedHowTo)
+      .then((res) => {
+        console.log(res);
+        setEditing(!editing);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const deleteHowTo = (id) => {
     console.log(id);
@@ -40,15 +60,24 @@ function MyHowTos(props) {
   return (
     <div>
       <p>Please Create More How Tos!</p>
-        {props.userHowTos.map((item) => {
+      {props.userHowTos &&
+        props.userHowTos.map((item) => {
           return (
             <div>
               {editing ? (
                 <form>
-                  <label>Title:</label>
-                  <input placeholder={item.title} />
-                  <label>Description:</label>
-                  <input placeholder={item.description} />
+                  <label htmlFor="title">Title:</label>
+                  <input
+                    name="title"
+                    value={editInputs.title}
+                    onChange={changeHowTo}
+                  />
+                  <label htmlFor="description">Description:</label>
+                  <input
+                    name="description"
+                    value={editInputs.description}
+                    onChange={changeHowTo}
+                  />
                 </form>
               ) : (
                 <div>
@@ -56,8 +85,14 @@ function MyHowTos(props) {
                   <p> Description: {item.description}</p>
                 </div>
               )}
-  
-              {editing ? <button onClick={() => editHowTo(item.postId)}>Submit</button> : <button onClick={() => editHowTo(item.postId)}>Edit</button>}
+
+              {editing ? (
+                <button onClick={() => submitChangedHowTo(item.postId)}>
+                  Submit
+                </button>
+              ) : (
+                <button onClick={() => editHowTo(item.postId)}>Edit</button>
+              )}
               <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
             </div>
           );

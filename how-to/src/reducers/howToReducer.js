@@ -50,7 +50,6 @@ export const howToReducer = (state = initialState, action) => {
             userHowTos: action.payload
           }
         }
-        
     default:
       return state;
   }
