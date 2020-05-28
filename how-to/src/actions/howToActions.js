@@ -4,6 +4,9 @@ export const INITIAL_HOWTO_FETCH = "INITIAL_HOWTO_FETCH"
 export const HOWTO_FETCH_SUCCESS = "HOWTO_FETCH_SUCCESS"
 export const FETCH_USER_NAME = "FETCH_USER_NAME"
 export const FETCH_USER_ID = "FETCH_USER_ID"
+export const FETCH_USER_HOWTOS = "FETCH_USER_HOWTOS"
+export const CREATE_USER_HOWTO = "CREATE_USER_HOWTO"
+
 
 export const getUser = () => {
   return dispatch => {
@@ -21,11 +24,12 @@ export const getUser = () => {
 }
 
 export const getUserHowTos = (id) => {
-  return dispatch => {
-    axiosWithAuth()
+  return async dispatch => {
+    await axiosWithAuth()
       .get(`https://howtobw.herokuapp.com/api/posts/user/${id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
+        dispatch({ type: FETCH_USER_HOWTOS, payload: res.data })
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +44,7 @@ export const getHowTos = () => {
     axiosWithAuth()
     .get('https://howtobw.herokuapp.com/api/posts')
     .then(res => {
-      console.log(res.data.data)
+      // console.log(res.data.data)
       dispatch({ type: HOWTO_FETCH_SUCCESS, payload: res.data.data })
     }
     )
@@ -51,11 +55,13 @@ export const getHowTos = () => {
 }
 
 export const createHowTo = (newHowTo) => {
-  return dispatch => {
-    axiosWithAuth()
+   return dispatch => {
+     axiosWithAuth()
     .post("https://howtobw.herokuapp.com/api/posts", newHowTo)
     .then(res => {
-      console.log(res.data)
+      console.log(res)
+      // window.location.reload()
+      // dispatch({ type: CREATE_USER_HOWTO, payload: newHowTo})
     })
     .catch(err => {
       console.log(err)
@@ -64,9 +70,3 @@ export const createHowTo = (newHowTo) => {
 }
 
 
-
-//get my howtows 
-
-//axios put 
-
-//myhowtos.  setup connect   .. props.id  ... import connect 

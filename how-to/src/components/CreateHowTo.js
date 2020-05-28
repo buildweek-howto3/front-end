@@ -1,6 +1,33 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createHowTo } from "../actions/howToActions"
+import { useHistory } from "react-router-dom"
+import styled from "styled-components"
+
+const CreateForm = styled.form`
+
+  height: 50vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  h2 {
+    font-size: 6rem;
+  }
+  label, input {
+    font-size: 4rem;
+    width: 50%;
+  }
+  button {
+    padding: 1rem;
+    font-size: 4rem;
+    border-radius: 1rem;
+    background-color: skyblue;
+  }
+
+`
+
 
 const initialNewHowTo = {
   title: "",
@@ -8,9 +35,10 @@ const initialNewHowTo = {
 };
 
 function CreateHowTo(props) {
+  const { push } = useHistory()
 //   console.log(props);
   const [newHowToInputs, setNewHowToInputs] = useState(initialNewHowTo);
-
+  const [edit, setEdit] = useState(false)
   const captureNewHowTo = (e) => {
     setNewHowToInputs({
       ...newHowToInputs,
@@ -26,11 +54,13 @@ function CreateHowTo(props) {
       }
       props.createHowTo(newHowTo)
       setNewHowToInputs(initialNewHowTo)
+      push("/profile/my-how-tos")
   }
 
 
   return (
-    <form onSubmit={addHowTo}>
+    <CreateForm onSubmit={addHowTo}>
+      <h2>New How To</h2>
       <label htmlFor="title">Title:</label>
       <input
         name="title"
@@ -44,7 +74,7 @@ function CreateHowTo(props) {
         onChange={captureNewHowTo}
       />
       <button>Submit</button>
-    </form>
+    </CreateForm>
   );
 }
 

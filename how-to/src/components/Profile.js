@@ -9,17 +9,25 @@ import { connect } from "react-redux";
 const ProfileContainer = styled.div`
   width: 100%;
   display: flex;
-  max-height: 100%;
-  height: 100%;
+  height: 80vh;
+  /* max-height: 100%; */
+  /* height: 100%; */
   nav {
-    width: 20%;
+    width: 15%;
     display: flex;
     flex-flow: column;
+    align-items: center;
     height: 100%;
     background-color: navy;
     a {
       color: lightblue;
       background-color: dodgerblue;
+      width: 50%;
+      padding: 1rem;
+      &:hover {
+        background-color: skyblue;
+        color: navy;
+      }
     }
   }
 `;
@@ -27,19 +35,32 @@ const ProfileContainer = styled.div`
 const ProfileContent = styled.div`
   width: 100%;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
+  p {
+    font-size: 5rem;
+  }
+`;
+
+const WelcomeUser = styled.h2`
+  font-size: 15rem;
+  margin: 5%;
 `;
 
 function Profile(props) {
   useEffect(() => {
-    props.getUser()
+    props.getUser();
   }, []);
   return (
     <ProfileContainer>
       <ProfileContent>
         <Route exact path="/profile">
-          <p>Welcome {props.username}!</p>
+          <WelcomeUser>Welcome {props.username}!</WelcomeUser>
+          <p>
+            You can create a new How To, Edit and Delete the How To's you have
+            already created.
+          </p>
         </Route>
         <Route path="/profile/create-how-to">
           <CreateHowTo />
@@ -61,6 +82,7 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     username: state.username,
+    userId: state.userId,
   };
 };
 

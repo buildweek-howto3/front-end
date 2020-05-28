@@ -4,7 +4,11 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+html {
+  font-size: 62.5%;
 }
 
 a {
@@ -16,5 +20,13 @@ nav {
   display: flex;
   justify-content: space-around;
   width: 50%;
+  font-size: 2rem;
+}
+
+h1, h2 {
+  font-size: 4rem;
+}
+
+a, p, input, label, button {
   font-size: 2rem;
 }

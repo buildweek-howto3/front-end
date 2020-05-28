@@ -64,7 +64,7 @@ const HowToCard = styled.div`
   }
 `;
 
-const Marketing = styled.div``;
+
 
 function LandingPage(props) {
   // console.log(props);
@@ -101,7 +101,7 @@ function LandingPage(props) {
                 <p>{howTo.description}</p>
               </HowToCard>
             );
-          })}{" "}
+          })}
         </HowToCards>
       )}
     </>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import * as Yup from 'yup';
 
-
 // STYLING ************
 const LoginForm = styled.form`
     display:flex;
@@ -43,7 +42,7 @@ const Login = () => {
         event.preventDefault();
         axiosWithAuth().post(`https://howtobw.herokuapp.com/api/auth/login`, login)
         .then(res => {
-            console.log(res.data.token);
+            console.log(res.data);
             localStorage.setItem('token', res.data.token);
             history.push('/profile')
 

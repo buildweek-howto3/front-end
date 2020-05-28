@@ -10,7 +10,10 @@ import Login from "./Login"
 import Signup from "./Signup"
 
 const ContentSection = styled.div`
+<<<<<<< HEAD
   
+=======
+>>>>>>> 65bf6e862b2e90970b672d09cb5891b75252e36f
   display: flex;
   justify-content: center;
   align-items: center;
