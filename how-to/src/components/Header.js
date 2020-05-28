@@ -44,14 +44,19 @@ const HeaderSection = styled.header`
 
 const Header = () => {
 
+    const logOut = () => {
+        localStorage.removeItem("token")
+    }
+
     return (
         <HeaderSection>
             <div className='titleWrapper'>
-                <Link to='/'><h1>Title</h1></Link>
+                <Link to='/'><h1>DiY Hacks</h1></Link>
                 <div className='navLinks'> 
                     <Link to='/login'>Login</Link>
                     <Link to='/signup'>Signup</Link>
                     <Link to='/profile'>Profile</Link>
+                    <Link to='/' onClick={logOut}>Logout</Link>
                 </div>
              </div>
             <SearchHowTo />

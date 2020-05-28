@@ -9,15 +9,13 @@ import { connect } from "react-redux";
 const ProfileContainer = styled.div`
   width: 100%;
   display: flex;
-  height: 80vh;
-  /* max-height: 100%; */
-  /* height: 100%; */
+  height: 100%;
+
   nav {
     width: 15%;
     display: flex;
     flex-flow: column;
     align-items: center;
-    height: 100%;
     background-color: navy;
     a {
       color: lightblue;
@@ -33,14 +31,12 @@ const ProfileContainer = styled.div`
 `;
 
 const ProfileContent = styled.div`
+  height: 100%;
   width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  p {
-    font-size: 5rem;
-  }
 `;
 
 const WelcomeUser = styled.h2`

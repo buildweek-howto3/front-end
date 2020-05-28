@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as Yup from 'yup';
-
+import { useHistory } from "react-router-dom"
 // STYLING ************
 const SignupForm = styled.form`
   display: flex;
@@ -19,6 +19,7 @@ const initialSignupInputs = {
 };
 
 const Signup = () => {
+  const { push } = useHistory()
   const [signup, setSignup] = useState(initialSignupInputs);
 
   const formSchema = Yup.object().shape({
@@ -71,6 +72,7 @@ const Signup = () => {
     .post("https://howtobw.herokuapp.com/api/auth/register", signup)
     .then(res => {
         console.log(res.data)
+        push("/login")
     })
     .catch(err => {
         console.log(err)
