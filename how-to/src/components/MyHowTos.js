@@ -1,29 +1,77 @@
 import React, { useState, useEffect } from "react";
-import { getUserHowTos } from "../actions/howToActions"; 
-import { connect } from 'react-redux';
+import { getUserHowTos } from "../actions/howToActions";
+import { connect } from "react-redux";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 function MyHowTos(props) {
- 
-    useEffect(() => {
-      props.getUserHowTos(props.userId)
-    },[]) 
+  //  console.log(props.userId)
+  // console.log(props.userHowTos)
+  const [loadingUserHowTos, setLoadingUserHowTos] = useState(false);
+  const [editing, setEditing] = useState(false);
+
+  useEffect(() => {
+    props.getUserHowTos(props.userId);
+  }, [loadingUserHowTos, props.howTos]);
+  console.log(props.userHowTos);
+
+  const editHowTo = (id) => {
+    console.log(id);
+    setEditing(!editing);
+  };
   
-    return (
+  const submitChangedHowTo = () => {
+    axiosWithAuth()
+    .put()
+    .then() 
+  }
+
+  const deleteHowTo = (id) => {
+    console.log(id);
+    axiosWithAuth()
+      .delete(`https://howtobw.herokuapp.com/api/posts/${id}`)
+      .then((res) => {
+        console.log(res);
+        setLoadingUserHowTos(!loadingUserHowTos);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  return (
     <div>
-      <h2>example how to</h2>
-      <p>description</p>
-      <button>add step</button>
-      <button>Edit</button>
-      <button>Delete</button>
+      <p>Please Create More How Tos!</p>
+        {props.userHowTos.map((item) => {
+          return (
+            <div>
+              {editing ? (
+                <form>
+                  <label>Title:</label>
+                  <input placeholder={item.title} />
+                  <label>Description:</label>
+                  <input placeholder={item.description} />
+                </form>
+              ) : (
+                <div>
+                  <h2>Title: {item.title}</h2>
+                  <p> Description: {item.description}</p>
+                </div>
+              )}
+  
+              {editing ? <button onClick={() => editHowTo(item.postId)}>Submit</button> : <button onClick={() => editHowTo(item.postId)}>Edit</button>}
+              <button onClick={() => deleteHowTo(item.postId)}>Delete</button>
+            </div>
+          );
+        })}
     </div>
   );
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    userId: state.userId
-  }
-}
+    ...state,
+    howTos: state.howTos,
+    userId: state.userId,
+    userHowTos: state.userHowTos,
+  };
+};
 
-export default connect(mapStateToProps, { getUserHowTos })(MyHowTos)
-
-
+export default connect(mapStateToProps, { getUserHowTos })(MyHowTos);
