@@ -35,19 +35,32 @@ const ProfileContainer = styled.div`
 const ProfileContent = styled.div`
   width: 100%;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
+  p {
+    font-size: 5rem;
+  }
+`;
+
+const WelcomeUser = styled.h2`
+  font-size: 15rem;
+  margin: 5%;
 `;
 
 function Profile(props) {
   useEffect(() => {
-    props.getUser()
+    props.getUser();
   }, []);
   return (
     <ProfileContainer>
       <ProfileContent>
         <Route exact path="/profile">
-          <h2>Welcome {props.username}!</h2>
+          <WelcomeUser>Welcome {props.username}!</WelcomeUser>
+          <p>
+            You can create a new How To, Edit and Delete the How To's you have
+            already created.
+          </p>
         </Route>
         <Route path="/profile/create-how-to">
           <CreateHowTo />
@@ -69,7 +82,7 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     username: state.username,
-    userId: state.userId
+    userId: state.userId,
   };
 };
 

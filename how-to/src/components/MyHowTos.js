@@ -2,6 +2,17 @@ import React, { useState, useEffect } from "react";
 import { getUserHowTos } from "../actions/howToActions";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import styled from "styled-components"
+
+const UserHowToCard = styled.div`
+  width: 20%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  height: 60vh;
+  border: 2px solid navy;
+  border-radius: 1rem;
+`
 
 function MyHowTos(props) {
   //  console.log(props.userId)
@@ -58,8 +69,8 @@ function MyHowTos(props) {
       });
   };
   return (
-    <div>
-      <p>Please Create More How Tos!</p>
+    <UserHowToCard>
+      <h2>Please Create More How Tos!</h2>
       {props.userHowTos &&
         props.userHowTos.map((item) => {
           return (
@@ -97,7 +108,7 @@ function MyHowTos(props) {
             </div>
           );
         })}
-    </div>
+    </UserHowToCard>
   );
 }
 const mapStateToProps = (state) => {
