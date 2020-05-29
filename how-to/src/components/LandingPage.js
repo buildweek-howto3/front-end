@@ -15,13 +15,12 @@ const Hero = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: inset 0 0 5px 5px #dcf6f3;
-      @media (max-width: 580px){
+      @media (max-width: 900px){
         display:flex;
         flex-direction:column;
         justify-content:space-evenly;
         align-items: center;
-        
-
+  
       }
 
     .heroWrap{
@@ -39,12 +38,22 @@ const Hero = styled.div`
         height: 16rem;
 
       }
+      @media (max-width: 900px){
+        margin-top:1%;
+        margin-bottom:1%;
+        border: 5px solid white;
+        height:22rem;
+      }
 
         h2 {
           margin: 5% 5% 0 5%;
           font-size: 3rem;
           @media (max-width: 580px){
             font-size: 2rem;
+
+          }
+          @media (max-width: 900px){
+            font-size: 2.5rem;
 
           }
 
@@ -54,6 +63,10 @@ const Hero = styled.div`
           font-size: 2rem;
           @media (max-width: 580px){
             font-size: 1.5rem;
+
+          }
+          @media (max-width: 900px){
+            font-size: 1.8rem;
 
           }
         }
@@ -75,6 +88,12 @@ const Hero = styled.div`
             font-size: 2rem;
             width: 10rem;
             height: 3rem;
+
+          }
+          @media (max-width: 900px){
+            font-size: 2rem;
+            width: 12rem;
+            height: 5rem;
 
           }
         }
@@ -118,8 +137,6 @@ const HowToCard = styled.div`
     padding: 3%;
     width: 80%;
     margin: 0 auto;
-    
-    
   }
 
   img {

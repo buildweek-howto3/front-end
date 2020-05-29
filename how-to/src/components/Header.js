@@ -24,6 +24,13 @@ const HeaderSection = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    @media (max-width: 580px){
+      display:flex;
+      flex-direction:column;
+      justify-content:space-evenly;
+      align-items:center;
+
+     }
 
     h1 {
       padding-left: 2rem;

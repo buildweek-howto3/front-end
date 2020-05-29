@@ -147,7 +147,6 @@ function MyHowTos(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    howTos: state.howTos,
     userId: state.userId,
     userHowTos: state.userHowTos,
   };
