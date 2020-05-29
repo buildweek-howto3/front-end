@@ -10,14 +10,27 @@ const SignupForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  h2{
+    margin-bottom: 3%;
+  }
+  label {
+    font-size: 2.5rem;
+  }
   input {
     margin: 3% 0;
+    background-color: #dcf6f3;
+    border: 2px solid #414756;
   }
   button {
     background-color: #414756;
     color: #dcf6f3;
     font-size: 2rem;
-    margin: 5%;
+    margin: 3%;
+    padding: 1.5%;
+    :disabled{
+      background:#c0c0c0;
+      color:#e8e8e8;
+    }
   }
 `;
 
@@ -92,7 +105,7 @@ const Signup = () => {
         <h2>User Signup</h2>
 
         <label>
-          UserName:
+          UserName: 
           <input
             type="text"
             name="username"
@@ -105,7 +118,7 @@ const Signup = () => {
           <p className="error">{errors.username}</p>
         ) : null}
         <label>
-          Password:
+          Password: 
           <input
             type="password"
             name="password"
