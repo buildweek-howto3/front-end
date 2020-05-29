@@ -8,10 +8,12 @@ const FooterSection = styled.footer`
   justify-content: center;
   align-items: center;
   background-color: dodgerblue;
-
+  overflow: hidden;
   width:100%;
+  
   p {
       color: lightgray;
+      
   }
 `;
 
