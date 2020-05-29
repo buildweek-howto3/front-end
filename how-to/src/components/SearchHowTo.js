@@ -13,13 +13,17 @@ const SearchForm = styled.form`
     color: lightgray;
 
     input {
-      height: 2rem;
-      width: 20rem;
+      height: 4rem;
+      width: 25rem;
       margin: 1rem;
       border: 2px solid #dcf6f3;
       background-color: #33918c;
       color: #dcf6f3;
       font-size: 2rem;
+
+      ::placeholder {
+        color: #dcf6f3;
+      }
     }
   }
   button {

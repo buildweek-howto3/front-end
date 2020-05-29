@@ -3,25 +3,80 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getHowTos } from "../actions/howToActions";
 import styled from "styled-components";
+import coverPhoto from'../assets/tinycoverphoto3.jpg';
 
 const Hero = styled.div`
     display: flex;
     height: 50vh;
     justify-content: space-evenly;
+    align-items:center;
     width:100%;
-    margin: 1% auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${coverPhoto});
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 5px 5px #dcf6f3;
+      @media (max-width: 580px){
+        display:flex;
+        flex-direction:column;
+        justify-content:space-evenly;
+        align-items: center;
+        
+
+      }
 
     .heroWrap{
       display:flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background-color: rgb(252,252,252); 
+      background-color: rgba(252,252,252, 0.4); 
+      height: 25rem;
+      border: 10px solid white;
+      @media (max-width: 580px){
+        margin-top:2%;
+        border: 5px solid white;
+        height: 16rem;
+
+      }
+
         h2 {
-          width: 50%;
-          margin: 5%;
+          margin: 5% 5% 0 5%;
+          font-size: 3rem;
+          @media (max-width: 580px){
+            font-size: 2rem;
+
+          }
+
+        }
+        h3 {
+          margin-top: 0;
+          font-size: 2rem;
+          @media (max-width: 580px){
+            font-size: 1.5rem;
+
+          }
         }
         button{
+          margin-top: 5%;
+          width: 17rem;
+          height: 5.5rem;
+          background-color: #DCF6F3;
+          color: #414756;
+          border: 1px solid #414756;
+          border-radius: 5px;
           font-size: 4rem;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+          transition: 0.3s;
+          &:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+          }
+          @media (max-width: 580px){
+            font-size: 2rem;
+            width: 10rem;
+            height: 3rem;
+
+          }
         }
     }
 `;
@@ -88,7 +143,8 @@ function LandingPage(props) {
     <>
       <Hero>
         <div className='heroWrap'>
-          <h2>Looking for Great Tutorials? You've come to the right place!</h2>
+          <h2>Looking for Great Tutorials?</h2>
+            <h3>You've come to the right place!</h3>
           <Link to="/signup">
             <button>Sign Up</button>
           </Link>
