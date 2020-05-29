@@ -18,12 +18,14 @@ const CreateForm = styled.form`
   label, input {
     font-size: 4rem;
     width: 50%;
+    margin-bottom: 1%;
   }
   button {
     padding: 1rem;
     font-size: 4rem;
     border-radius: 1rem;
     background-color: skyblue;
+    margin-top: 1%;
   }
 
 `
