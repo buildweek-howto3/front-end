@@ -6,7 +6,7 @@ import styled from "styled-components"
 
 const CreateForm = styled.form`
 
-  height: 50vh;
+  height: 80vh;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
@@ -14,16 +14,19 @@ const CreateForm = styled.form`
   width: 50%;
   h2 {
     font-size: 6rem;
+    text-decoration: underline;
   }
   label, input {
     font-size: 4rem;
     width: 50%;
+    margin-bottom: 1%;
   }
   button {
     padding: 1rem;
     font-size: 4rem;
     border-radius: 1rem;
     background-color: skyblue;
+    margin-top: 1%;
   }
 
 `
@@ -32,6 +35,8 @@ const CreateForm = styled.form`
 const initialNewHowTo = {
   title: "",
   description: "",
+  materials: "",
+  instructions: ""
 };
 
 function CreateHowTo(props) {
@@ -50,7 +55,9 @@ function CreateHowTo(props) {
       e.preventDefault()
       const newHowTo = {
         title: newHowToInputs.title,
-        description: newHowToInputs.description
+        description: newHowToInputs.description,
+        materials: newHowToInputs.materials,
+        instructions: newHowToInputs.instructions
       }
       props.createHowTo(newHowTo)
       setNewHowToInputs(initialNewHowTo)
@@ -71,6 +78,18 @@ function CreateHowTo(props) {
       <input
         name="description"
         value={newHowToInputs.description}
+        onChange={captureNewHowTo}
+      />
+      <label htmlFor="materials">Materials:</label>
+      <input
+        name="materials"
+        value={newHowToInputs.materials}
+        onChange={captureNewHowTo}
+      />
+      <label htmlFor="instructions">Instructions:</label>
+      <input
+        name="instructions"
+        value={newHowToInputs.instructions}
         onChange={captureNewHowTo}
       />
       <button>Submit</button>
