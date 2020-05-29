@@ -5,10 +5,11 @@ import styled from "styled-components";
 const FooterSection = styled.footer`
   height: 10vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: #414756;
   width: 100%;
+  box-shadow: inset 0 0 5px 5px #dcf6f3;
 
   a,
   p {
@@ -19,12 +20,10 @@ const FooterSection = styled.footer`
 export default function Footer() {
   return (
     <FooterSection>
-      <p>CopyRight </p>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-      </nav>
+      <p>CopyRight</p>
+      <p>Forum</p>
+      <p>Support</p>
+      <p>Contact</p>
     </FooterSection>
   );
 }
