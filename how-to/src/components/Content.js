@@ -13,7 +13,7 @@ const ContentSection = styled.div`
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  background-color: lightblue;
+  background-color: #33918C;
   width: 100%;
   height: 80vh;
   

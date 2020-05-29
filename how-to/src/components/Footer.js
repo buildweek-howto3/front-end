@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const FooterSection = styled.footer`
@@ -7,19 +7,19 @@ const FooterSection = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: dodgerblue;
-  overflow: hidden;
-  width:100%;
-  
+  background-color: #414756;
+  width: 100%;
+
+  a,
   p {
-      color: lightgray;
-      
+    color: #dcf6f3;
   }
 `;
 
 export default function Footer() {
   return (
     <FooterSection>
+      <p>CopyRight </p>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>

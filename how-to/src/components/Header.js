@@ -11,6 +11,7 @@ const HeaderSection = styled.header`
   justify-content: flex-start;
   align-items: center;
   background-color: #414756;
+  box-shadow: inset 0 0 5px 5px #dcf6f3;
   h1,
   a,
   label,
@@ -21,7 +22,8 @@ const HeaderSection = styled.header`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    padding: 1rem;
 
     h1 {
       padding-left: 2rem;
@@ -41,8 +43,11 @@ const HeaderSection = styled.header`
         border: 2px solid lightgray;
         border-radius: 10px;
         padding: 0.3rem;
+        transition: 1s;
         &:hover {
           background-color: #33918C;
+          margin:  0 2rem;
+          transition: 1s;
         }
       }
     }

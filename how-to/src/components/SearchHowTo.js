@@ -25,9 +25,11 @@ const SearchForm = styled.form`
   button {
     background-color: #33918c;
     color: #dcf6f3;
-    padding: 0.2rem;
+    padding: 0.2rem 1rem;
     border: 2px solid #dcf6f3;
+    border-radius: 1rem;
     font-size: 2rem;
+
     &:hover {
       background-color: #dcf6f3;
       color: #414756;
