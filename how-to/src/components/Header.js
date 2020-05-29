@@ -27,9 +27,12 @@ const HeaderSection = styled.header`
 
     h1 {
       padding-left: 2rem;
+      transition: 0.5s;
+
       &:hover {
         color: #33918C;
         text-shadow: 0 2px 2px #dcf6f3;
+        transition: 0.5s;
        }
       
     }

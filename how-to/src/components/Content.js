@@ -15,7 +15,6 @@ const ContentSection = styled.div`
   flex-flow: column;
   background-color: #dcf6f3;
   width: 100%;
-  height: 80vh;
   
 `;
 

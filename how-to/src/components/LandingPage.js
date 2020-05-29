@@ -4,45 +4,42 @@ import { Link } from "react-router-dom";
 import { getHowTos } from "../actions/howToActions";
 import styled from "styled-components";
 
-const LandingPageStyle = styled.div`
+const Hero = styled.div`
     display: flex;
-    height: auto;
+    height: 50vh;
     justify-content: space-evenly;
     width:100%;
     margin: 1% auto;
 
-    .landingPageWrap{
+    .heroWrap{
       display:flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-        p{
-          font-size: 1.8rem;
+        h2 {
+          width: 50%;
+          margin: 5%;
         }
         button{
-          width: 100px;
-          height: 25px;
-
+          font-size: 4rem;
         }
     }
 `;
 
 const HowToCards = styled.section`
-  margin-top: 1%;
-  margin-bottom: 1%;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  flex-flow: wrap;
-`;
-const HowToCard = styled.div`
-  width: 18em;
-  height: 18em;
-  display: flex;
   flex-flow: row wrap;
-  padding: 1%;
-  margin-top: 2%;
-  border: 2px solid red;
+  margin-bottom: 5%;
+`;
+
+const HowToCard = styled.div`
+  width: 18%;
+  margin: 1%;
+  display: flex;
+  flex-flow: column;
+  border: 2px solid #414756;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
@@ -51,20 +48,16 @@ const HowToCard = styled.div`
   }
   
   h2 {
-    font-size: 20px;
+    font-size: 2rem;
     text-align: center;
     padding: 1%;
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 4%;
-    
-    
+    width: 80%;    
   }
 
   p {
     font-size: 16px;
     text-align: center;
-    border-top: 2px solid red;
+    border-top: 2px solid #414756;
     padding: 3%;
     width: 80%;
     margin: 0 auto;
@@ -75,7 +68,7 @@ const HowToCard = styled.div`
   img {
     width: 9em;
     height: 9em;
-    background-color: navy;
+    background-color: #33918C;
     margin: 0 auto;
   }
 `;
@@ -91,20 +84,20 @@ function LandingPage(props) {
 
   return (
     <>
-      <LandingPageStyle>
-        <div className='landingPageWrap'>
-          <p>Looking for Great Tutorials? You've come to the right place!</p>
+      <Hero>
+        <div className='heroWrap'>
+          <h2>Looking for Great Tutorials? You've come to the right place!</h2>
           <Link to="/signup">
             <button>Sign Up</button>
           </Link>
         </div>
-        <div className='landingPageWrap'>
-          <p>Already a Member?</p>
+        <div className='heroWrap'>
+          <h2>Already a Member?</h2>
           <Link to="/login">
             <button>Login</button>
           </Link>
         </div>
-      </LandingPageStyle>
+      </Hero>
       {props.loadingHowTos ? (
         <p>fetching How Tos ....</p>
       ): (
