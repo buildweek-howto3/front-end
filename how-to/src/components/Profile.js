@@ -26,6 +26,16 @@ const ProfileContainer = styled.div`
         background-color: #414756;
         color: #dcf6f3;
       }
+      @media (max-width: 900px){
+        width:70%;
+       font-size: 1.5rem;
+
+     }
+     @media (max-width: 580px){
+        width:90%;
+       font-size: 1.5rem;
+
+     }
     }
   }
 `;
@@ -43,11 +53,21 @@ const ProfileContent = styled.div`
     flex-flow: column;
     justify-content: center;
     align-items: center;
+
   }
 `;
 
 const WelcomeUser = styled.h2`
   font-size: 15rem;
+  @media (max-width: 900px){
+       font-size: 10rem;
+
+     }
+
+  @media (max-width: 580px){
+       font-size: 8rem;
+
+     }
 `;
 
 function Profile(props) {

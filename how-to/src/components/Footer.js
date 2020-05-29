@@ -14,6 +14,9 @@ const FooterSection = styled.footer`
   a,
   p {
     color: #dcf6f3;
+    &:hover{
+      font-size:2.2rem;
+    }
   }
 `;
 
