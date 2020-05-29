@@ -1,29 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const FooterSection = styled.footer`
   height: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  background-color: dodgerblue;
-  width:100%;
+  background-color: #414756;
+  width: 100%;
+  box-shadow: inset 0 0 5px 5px #dcf6f3;
 
+  a,
   p {
-      color: lightgray;
-      
+    color: #dcf6f3;
   }
 `;
 
 export default function Footer() {
   return (
     <FooterSection>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-      </nav>
+      <p>CopyRight</p>
+      <p>Forum</p>
+      <p>Support</p>
+      <p>Contact</p>
     </FooterSection>
   );
 }

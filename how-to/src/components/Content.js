@@ -13,9 +13,8 @@ const ContentSection = styled.div`
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  background-color: lightblue;
+  background-color: #dcf6f3;
   width: 100%;
-  height: 100%;
   
 `;
 

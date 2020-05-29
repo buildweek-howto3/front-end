@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import * as Yup from 'yup';
-import { useHistory } from "react-router-dom"
+import * as Yup from "yup";
+import { useHistory } from "react-router-dom";
 // STYLING ************
 const SignupForm = styled.form`
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  input {
+    margin: 3% 0;
+  }
+  button {
+    background-color: #414756;
+    color: #dcf6f3;
+    font-size: 2rem;
+    margin: 5%;
+  }
 `;
 
 // CODE *********
@@ -19,70 +29,68 @@ const initialSignupInputs = {
 };
 
 const Signup = () => {
-  const { push } = useHistory()
+  const { push } = useHistory();
   const [signup, setSignup] = useState(initialSignupInputs);
 
   const formSchema = Yup.object().shape({
-    username: Yup
-        .string()
-        .required('Must include a valid username.'),
-    password: Yup
-        .string()
-        .min(4, 'Passwords must be at least 4 characters long.')
-        .required('Password is required.')
+    username: Yup.string().required("Must include a valid username."),
+    password: Yup.string()
+      .min(4, "Passwords must be at least 4 characters long.")
+      .required("Password is required."),
   });
 
   const [errors, setErrors] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const captureSignup = (event) => {
     event.persist();
     Yup.reach(formSchema, event.target.name)
-    .validate(event.target.value)
-    .then( valid => {
+      .validate(event.target.value)
+      .then((valid) => {
         setErrors({
-            ...errors,
-            [event.target.name]: ''
+          ...errors,
+          [event.target.name]: "",
         });
-    })
-    .catch(err => {
+      })
+      .catch((err) => {
         setErrors({
-            ...errors,
-            [event.target.name]: err.errors[0]
+          ...errors,
+          [event.target.name]: err.errors[0],
         });
-    });
-    setSignup({ 
-        ...signup, 
-        [event.target.name]: event.target.value 
+      });
+    setSignup({
+      ...signup,
+      [event.target.name]: event.target.value,
     });
   };
 
-  useEffect( () => {
-    formSchema.isValid(signup).then(valid => {
-        setButtonDisabled(!valid);
+  useEffect(() => {
+    formSchema.isValid(signup).then((valid) => {
+      setButtonDisabled(!valid);
     });
-  }, [signup])
+  }, [signup]);
 
   const registerUser = (event) => {
     event.preventDefault();
     axiosWithAuth()
-    .post("https://howtobw.herokuapp.com/api/auth/register", signup)
-    .then(res => {
-        console.log(res.data)
-        push("/login")
-    })
-    .catch(err => {
-        console.log(err)
-    })
+      .post("https://howtobw.herokuapp.com/api/auth/register", signup)
+      .then((res) => {
+        console.log(res.data);
+        push("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div>
-      <h2>User Signup</h2>
       <SignupForm onSubmit={registerUser}>
+        <h2>User Signup</h2>
+
         <label>
           UserName:
           <input
@@ -93,7 +101,9 @@ const Signup = () => {
             onChange={captureSignup}
           />
         </label>
-        {errors.username.length > 0 ? (<p className='error'>{errors.username}</p>) : null}
+        {errors.username.length > 0 ? (
+          <p className="error">{errors.username}</p>
+        ) : null}
         <label>
           Password:
           <input
@@ -104,7 +114,9 @@ const Signup = () => {
             onChange={captureSignup}
           />
         </label>
-        {errors.password.length > 4 ? (<p className='error'>{errors.password}</p>) : null}
+        {errors.password.length > 4 ? (
+          <p className="error">{errors.password}</p>
+        ) : null}
         <button disabled={buttonDisabled}>Submit</button>
       </SignupForm>
     </div>

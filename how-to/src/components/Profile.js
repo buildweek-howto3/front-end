@@ -16,15 +16,15 @@ const ProfileContainer = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
-    background-color: navy;
+    background-color: #33918c;
     a {
-      color: lightblue;
-      background-color: dodgerblue;
+      color: #414756;
+      background-color: #dcf6f3;
       width: 50%;
       padding: 1rem;
       &:hover {
-        background-color: skyblue;
-        color: navy;
+        background-color: #414756;
+        color: #dcf6f3;
       }
     }
   }
@@ -37,11 +37,17 @@ const ProfileContent = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  .welcomeContainer {
+    height: 80vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const WelcomeUser = styled.h2`
   font-size: 15rem;
-  margin: 5%;
 `;
 
 function Profile(props) {
@@ -52,11 +58,13 @@ function Profile(props) {
     <ProfileContainer>
       <ProfileContent>
         <Route exact path="/profile">
-          <WelcomeUser>Welcome {props.username}!</WelcomeUser>
-          <p>
-            You can create a new How To, Edit and Delete the How To's you have
-            already created.
-          </p>
+          <div className="welcomeContainer">
+            <WelcomeUser>Welcome {props.username}!</WelcomeUser>
+            <p>
+              You can create a new How To, Edit and Delete the How To's you have
+              already created.
+            </p>
+          </div>
         </Route>
         <Route path="/profile/create-how-to">
           <CreateHowTo />
