@@ -39,6 +39,8 @@ const HowToCard = styled.div`
   margin: 1%;
   display: flex;
   flex-flow: column;
+  justify-content: center;
+  align-items: center;
   border: 2px solid #414756;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
