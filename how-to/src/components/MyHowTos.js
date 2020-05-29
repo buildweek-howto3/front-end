@@ -35,6 +35,8 @@ function MyHowTos(props) {
   const [editInputs, setEditInputs] = useState({
     title: "",
     description: "",
+    materials: "",
+    instructions: ""
   });
   const [userId, setUserId] = useState("");
 
@@ -43,7 +45,7 @@ function MyHowTos(props) {
   }, [loadingUserHowTos, editing]);
   // console.log(props.userHowTos);
 
-  const editHowTo = (itemTitle, itemDescription, itemId) => {
+  const editHowTo = (itemTitle, itemDescription, itemMaterials, itemInstructions, itemId) => {
     // console.log(id);
     //only turn on editing for a single item
     setEditing(true);
@@ -51,6 +53,8 @@ function MyHowTos(props) {
       ...editInputs,
       title: itemTitle,
       description: itemDescription,
+      materials: itemMaterials,
+      instructions: itemInstructions
     });
     setUserId(itemId);
   };
@@ -100,7 +104,7 @@ function MyHowTos(props) {
                 <p> Instructions: {item.instructions}</p>
                 <button
                   onClick={() =>
-                    editHowTo(item.title, item.description, item.postId)
+                    editHowTo(item.title, item.description, item.materials, item.instructions, item.postId)
                   }
                 >
                   Edit
@@ -118,6 +122,18 @@ function MyHowTos(props) {
           <input
             name="description"
             value={editInputs.description}
+            onChange={changeHowTo}
+          />
+          <label htmlFor="materials">Materials:</label>
+          <input
+            name="materials"
+            value={editInputs.materials}
+            onChange={changeHowTo}
+          />
+          <label htmlFor="instructions">Instructions:</label>
+          <input
+            name="instructions"
+            value={editInputs.instructions}
             onChange={changeHowTo}
           />
           <button>Submit</button>
