@@ -49,15 +49,16 @@ const SearchHowTo = (props) => {
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
+    const filteredHowTos = props.howTos.filter(howTo => {
+      return howTo.title.toLowerCase().includes(search)
+    })
+    props.searchHowTos(filteredHowTos)
     
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const filteredHowTos = props.howTos.filter(howTo => {
-      return howTo.title.toLowerCase().includes(search)
-    })
-    props.searchHowTos(filteredHowTos)
+    
   };
 
   return (

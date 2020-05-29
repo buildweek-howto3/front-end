@@ -53,14 +53,9 @@ export const howToReducer = (state = initialState, action) => {
         };
       }
     case SEARCH_HOWTOS:
-      if (action.payload === "") {
-        return state
-      } else {
-        return {
-          ...state,
-          filered: action.payload,
-          howTos: state.filtered
-        };
+      return {
+        ...state,
+        howTos: action.payload
       }
       case CREATE_USER_HOWTO:
         return {
