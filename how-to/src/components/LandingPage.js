@@ -9,7 +9,6 @@ const LandingPageStyle = styled.div`
     justify-content: space-evenly;
     align-items:center;
     width:100%;
-    margin: 1% auto;
 
     .landingPageWrap{
       display:flex;
@@ -36,7 +35,7 @@ const HowToCards = styled.section`
   flex-flow: wrap;
 `;
 const HowToCard = styled.div`
-  width: 14rem;
+  width: 20rem;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
