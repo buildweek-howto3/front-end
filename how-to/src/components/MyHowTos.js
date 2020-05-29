@@ -11,15 +11,17 @@ const UserHowToCard = styled.div`
   justify-content: space-around;
   border: 2px solid navy;
   border-radius: 1rem;
+  margin: 1%;
 `;
 
 const UserHowToContainer = styled.div`
-  height: 100%;
+  height: 80vh;
   width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
+  overflow: scroll;
 
   .cardContainer {
     width: 100%;

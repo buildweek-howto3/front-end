@@ -6,7 +6,7 @@ import styled from "styled-components"
 
 const CreateForm = styled.form`
 
-  height: 50vh;
+  height: 80vh;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
@@ -14,6 +14,7 @@ const CreateForm = styled.form`
   width: 50%;
   h2 {
     font-size: 6rem;
+    text-decoration: underline;
   }
   label, input {
     font-size: 4rem;
