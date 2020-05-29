@@ -1,9 +1,9 @@
 * {
-  
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-align: center;
-  
+  color: #414756;
   /* border: 1px solid black; */
 }
 
@@ -24,14 +24,14 @@ nav {
   font-size: 2rem;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-size: 4rem;
 }
 
-a, p, input, label {
+a,
+p,
+input,
+label {
   font-size: 2rem;
-}
-
-.page {
-  overflow: hidden;
 }
