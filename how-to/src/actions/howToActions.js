@@ -62,7 +62,7 @@ export const createHowTo = (newHowTo) => {
     .then(res => {
       console.log(res)
       // window.location.reload()
-      // dispatch({ type: CREATE_USER_HOWTO, payload: newHowTo})
+      dispatch({ type: CREATE_USER_HOWTO, payload: res.data})
     })
     .catch(err => {
       console.log(err)

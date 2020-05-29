@@ -5,6 +5,7 @@ import {
   FETCH_USER_ID,
   FETCH_USER_HOWTOS,
   SEARCH_HOWTOS,
+  CREATE_USER_HOWTO
 } from "../actions/howToActions";
 
 const initialState = {
@@ -61,7 +62,11 @@ export const howToReducer = (state = initialState, action) => {
           howTos: state.filtered
         };
       }
-      
+      case CREATE_USER_HOWTO:
+        return {
+          ...state,
+          userHowTos: action.payload
+        }
 
     default:
       return state;
