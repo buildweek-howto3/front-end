@@ -3,16 +3,17 @@ import {
   INITIAL_HOWTO_FETCH,
   FETCH_USER_NAME,
   FETCH_USER_ID,
-  FETCH_USER_HOWTOS
+  FETCH_USER_HOWTOS,
+  SEARCH_HOWTOS,
 } from "../actions/howToActions";
 
 const initialState = {
   loadingHowTos: false,
   howTos: [],
+  filered: [],
   username: "",
   userId: "",
   userHowTos: [],
-  
 };
 
 export const howToReducer = (state = initialState, action) => {
@@ -31,25 +32,37 @@ export const howToReducer = (state = initialState, action) => {
     case FETCH_USER_NAME:
       return {
         ...state,
-        username: action.payload
+        username: action.payload,
       };
     case FETCH_USER_ID:
       return {
         ...state,
-        userId: action.payload
+        userId: action.payload,
       };
-      case FETCH_USER_HOWTOS:
-        if (action.payload === "") {
-          return {
-            ...state,
-            userHowTos: [action.payload]
-          }
-        } else {
-          return {
-            ...state,
-            userHowTos: action.payload
-          }
-        }
+    case FETCH_USER_HOWTOS:
+      if (action.payload === "") {
+        return {
+          ...state,
+          userHowTos: [action.payload],
+        };
+      } else {
+        return {
+          ...state,
+          userHowTos: action.payload,
+        };
+      }
+    case SEARCH_HOWTOS:
+      if (action.payload === "") {
+        return state
+      } else {
+        return {
+          ...state,
+          filered: action.payload,
+          howTos: state.filtered
+        };
+      }
+      
+
     default:
       return state;
   }

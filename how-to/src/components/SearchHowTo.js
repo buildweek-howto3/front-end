@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import { connect } from "react-redux";
+import { searchHowTos } from "../actions/howToActions"
 // STYLING ************
 const SearchForm = styled.form`
   margin: 3rem;
@@ -43,17 +44,20 @@ const SearchForm = styled.form`
 
 // CODE *********
 
-const SearchHowTo = () => {
+const SearchHowTo = (props) => {
   const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
-    console.log(search.terms);
+    
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setSearch({terms: ''})
+    const filteredHowTos = props.howTos.filter(howTo => {
+      return howTo.title.toLowerCase().includes(search)
+    })
+    props.searchHowTos(filteredHowTos)
   };
 
   return (
@@ -74,4 +78,11 @@ const SearchHowTo = () => {
   );
 };
 
-export default SearchHowTo;
+const mapStateToProps = state => {
+  return {
+    ...state,
+    howTos: state.howTos
+  }
+}
+
+export default connect(mapStateToProps, {searchHowTos})(SearchHowTo);

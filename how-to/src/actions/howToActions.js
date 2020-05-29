@@ -6,6 +6,7 @@ export const FETCH_USER_NAME = "FETCH_USER_NAME"
 export const FETCH_USER_ID = "FETCH_USER_ID"
 export const FETCH_USER_HOWTOS = "FETCH_USER_HOWTOS"
 export const CREATE_USER_HOWTO = "CREATE_USER_HOWTO"
+export const SEARCH_HOWTOS = "SEARCH_HOWTOS"
 
 
 export const getUser = () => {
@@ -69,4 +70,8 @@ export const createHowTo = (newHowTo) => {
   }
 }
 
-
+export const searchHowTos = (newArray) => {
+  return dispatch => {
+    dispatch({ type: SEARCH_HOWTOS, payload: newArray})
+  }
+}
