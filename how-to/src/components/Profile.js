@@ -11,12 +11,36 @@ const ProfileContainer = styled.div`
   display: flex;
   height: 100%;
 
+  @media (max-width: 900px){
+       display:flex;
+       flex-direction:column-reverse;
+       justify-content:space-evenly;
+       align-items:center;
+
+     }
+
   nav {
     width: 15%;
     display: flex;
     flex-flow: column;
     align-items: center;
     background-color: #33918c;
+    @media (max-width:1400px){
+      width: 25%;
+    }
+    @media (max-width: 900px){
+       width:96%;
+       display:flex;
+       flex-direction:row;
+       justify-content:space-evenly;
+       align-items:center;
+       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+       transition: 0.3s;
+        &:hover {
+          box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+    }
+
+     }
     a {
       color: #414756;
       background-color: #dcf6f3;
@@ -27,15 +51,12 @@ const ProfileContainer = styled.div`
         color: #dcf6f3;
       }
       @media (max-width: 900px){
-        width:70%;
-       font-size: 1.5rem;
+        width:25%;
+        font-size: 1.5rem;
+        margin:3%;
 
      }
-     @media (max-width: 580px){
-        width:90%;
-       font-size: 1.5rem;
-
-     }
+     
     }
   }
 `;

@@ -19,8 +19,13 @@ const LoginForm = styled.form`
   }
   input {
     margin: 3% 0;
-    background-color: #dcf6f3;
+    background-color: #33918c;
     border: 2px solid #414756;
+    height: 3.5rem;
+    color: #dcf6f3;
+    ::placeholder {
+        color: #dcf6f3;
+      }
   }
   button {
     background-color: #414756;
