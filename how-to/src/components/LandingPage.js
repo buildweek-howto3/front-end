@@ -6,8 +6,8 @@ import styled from "styled-components";
 
 const LandingPageStyle = styled.div`
     display: flex;
+    height: auto;
     justify-content: space-evenly;
-    align-items:center;
     width:100%;
     margin: 1% auto;
 
@@ -17,7 +17,7 @@ const LandingPageStyle = styled.div`
       justify-content: center;
       align-items: center;
         p{
-          font-size: 1rem;
+          font-size: 1.8rem;
         }
         button{
           width: 100px;
@@ -36,10 +36,10 @@ const HowToCards = styled.section`
   flex-flow: wrap;
 `;
 const HowToCard = styled.div`
-  width: 14rem;
+  width: 18em;
+  height: auto;
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
   padding: 1%;
   margin-top: 2%;
   border: 2px solid red;
@@ -49,16 +49,32 @@ const HowToCard = styled.div`
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
   }
-  h2,
-  p {
+  
+  h2 {
+    font-size: 20px;
+    text-align: center;
     padding: 1%;
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 4%;
+    
+    
+  }
+
+  p {
+    font-size: 16px;
+    text-align: center;
+    border-top: 2px solid red;
+    padding: 3%;
+    width: 80%;
+    margin: 0 auto;
+    
+    
   }
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 9em;
+    height: 9em;
     background-color: navy;
     margin: 0 auto;
   }
