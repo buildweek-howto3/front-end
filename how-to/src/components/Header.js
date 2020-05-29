@@ -42,14 +42,13 @@ const HeaderSection = styled.header`
       justify-content: space-evenly;
       align-items: center;
       a {
-        margin-right: 1rem;
         border: 2px solid lightgray;
         border-radius: 10px;
         padding: 0.3rem;
         transition: 1s;
+        margin: 1rem;
         &:hover {
           background-color: #33918C;
-          margin:  0 2rem;
           transition: 1s;
         }
       }
