@@ -37,7 +37,7 @@ const HowToCards = styled.section`
 `;
 const HowToCard = styled.div`
   width: 18em;
-  height: 18em;
+  height: auto;
   display: flex;
   flex-flow: row wrap;
   padding: 1%;

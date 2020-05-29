@@ -3,14 +3,13 @@ import { Link } from "react-router-dom"
 import styled from "styled-components";
 
 const FooterSection = styled.footer`
-  height: 10vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: dodgerblue;
-  overflow: hidden;
   width:100%;
-  
+
   p {
       color: lightgray;
       
